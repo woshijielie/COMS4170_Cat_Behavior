@@ -1,0 +1,200 @@
+.navbar{
+    background-color: #78919c;
+    height: 80px;
+}
+.nav-title{
+    padding: 40px;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: normal;
+}
+.nav-section{
+    position: relative;
+    left: 110%;
+    display: inline-block;
+    font-size: 30px;
+    font-family: "Times New Roman";
+    font-weight: bold;
+}
+.button_container{
+    width: 100%;
+    height: 40px;
+}
+.next_button{
+    position: absolute;
+    margin: 20px 0px 0px;
+    right: 100px;
+    width: 180px;
+    height: 45px;
+    background-color: #b6948d;
+    font-weight: bolder;
+    border-style: none;
+    display: inline-block;
+}
+.prev_button{
+    position: absolute;
+    margin: 20px 0px 0px;
+    left: 100px;
+    width: 180px;
+    height: 45px;
+    background-color: #b6948d;
+    font-weight: bolder;
+    border-style: none;
+    display: inline-block;
+}
+input[type=checkbox] {
+    display:none;
+}
+input[type=text] {
+    border-color: grey;
+    border-style: solid;
+    margin: 10px 20px 10px;
+}
+.quiz1_img + label{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size:  cover;
+    height: 250px;
+    width: 320px;
+    display:inline-block;
+    margin: 40px 50px 40px;
+}
+.quiz1_img:checked + label{
+    border-color: red;
+    border-style: solid;
+    background-size: 100%;
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-size:  cover;
+    height: 250px;
+    width: 320px;
+    display:inline-block;
+    margin: 40px 50px 40px;
+}
+.quiz2_img + label{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size:  cover;
+    height: 200px;
+    width: 250px;
+    margin: 40px 50px 0px;
+}
+.quiz2_img:checked + label{
+    border-color: red;
+    border-style: solid;
+    background-size: 100%;
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-size:  cover;
+    height: 200px;
+    width: 250px;
+    margin: 40px 50px 0px;
+}
+.quiz3_img + label{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size:  cover;
+    height: 220px;
+    width: 280px;
+    margin: 40px 160px 0px;
+}
+.quiz3_img:checked + label{
+    border-color: red;
+    border-style: solid;
+    background-size: 100%;
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-size:  cover;
+    height: 220px;
+    width: 280px;
+    margin: 40px 160px 0px;
+}
+.quiz4_img{
+    height: 250px;
+    width: auto;
+}
+.quiz4_choice + label{
+    height: 80px;
+    width: 700px;
+    font-size: 23px;
+}
+.quiz4_choice:checked + label{
+    border-color: red;
+    border-style: solid;
+    height: 80px;
+    width: 700px;
+    font-size: 23px;
+}
+#quiz_4_container{
+    margin: 40px 40px 0px;
+}
+#quiz_4_img_container{
+    display: inline-block;
+    vertical-align: top;
+}
+#quiz_4_choices_container{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 40px;
+}
+#quiz_5_container{
+    margin: 40px 120px 0px;
+}
+#quiz_5_player_container{
+    display: inline-block;
+    vertical-align: top;
+    font-size: 25px;
+}
+#quiz_5_choices_container{
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 10px;
+    margin-left: 100px;
+    font-size: 25px;
+}
+.quiz5_img{
+    width: 35px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+.quiz5_choice{
+    height: 30px;
+}
+#quiz_review_container{
+    margin: 40px 150px 0px;
+}
+.quiz_review_choice + label{
+    height: 80px;
+    width: 1100px;
+    font-size: 23px;
+}
+.quiz_review_choice:checked + label{
+    border-color: red;
+    border-style: solid;
+    height: 80px;
+    width: 1100px;
+    font-size: 23px;
+}
+#quiz_end_container{
+    text-align: center;
+}
+.quiz_end_img{
+    height: 300px;
+    width: auto;
+}
+.question_title{
+    font-size: 30px;
+}
+.question_body{
+    color: cornflowerblue;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 30px;
+}
+#quiz_end_body{
+    font-size: 40px;
+    padding: 30px 150px 40px;
+}
