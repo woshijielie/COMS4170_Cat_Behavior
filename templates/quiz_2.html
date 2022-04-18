@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <script type="text/javascript" src="{{ url_for('static', filename = 'quiz_2.js') }}"></script>
+
+    <script>
+        let data = {{data | tojson}}
+        console.log(data)
+    </script>
+
+    <div class="button_container">
+        <button type="button" class="btn btn-primary btn-lg prev_button" onclick="location.href='quiz_1';">< Previous</button>
+        <button type="button" class="btn btn-primary btn-lg next_button" onclick="location.href='quiz_3';">Next ></button>
+    </div>
+
+    <div class="question_body"><span class="question_title">Q2: </span> Which one is the puffed up tail? (10 pt)</div>
+
+    <div id="quiz_2_container"></div>
+
+
+{% endblock %}

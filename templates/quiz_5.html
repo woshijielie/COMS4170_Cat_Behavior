@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <script type="text/javascript" src="{{ url_for('static', filename = 'quiz_5.js') }}"></script>
+
+    <script>
+        let data = {{data | tojson}};
+        let choices = {{choices | tojson}};
+        let img = "" + {{img | tojson}};
+    </script>
+
+    <div class="button_container">
+        <button type="button" class="btn btn-primary btn-lg prev_button" onclick="location.href='quiz_4';">< Previous</button>
+        <button type="button" class="btn btn-primary btn-lg next_button" onclick="location.href='quiz_review';">Next ></button>
+    </div>
+
+    <div class="question_body"><span class="question_title">Q5: </span> Match the meaning of different cat meows. (50 pt)</div>
+    
+    <div id="quiz_5_container">
+        <div id="quiz_5_player_container"></div>
+        <div id="quiz_5_choices_container"></div>
+    </div>
+    <div id="quiz_5_audio_container"></div>
+{% endblock %}
