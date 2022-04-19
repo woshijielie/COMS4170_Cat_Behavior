@@ -154,20 +154,40 @@ data = {
               'https://static-cdn.jtvnw.net/jtv_user_pictures/b6be9ae8-3433-4a32-bc20-a749781ca0f5-profile_banner-480-320x160.jpeg']}
 }
 
-solutions = [('0',10),('1',10),('12',10),('0',10),('ABCDE',50),('023',10)] #stringfy index of correct objects expert q5 is char
+# records correct solution for each quiz by stringfing index of correct objects expert q5 is char
+solutions = [('0',10),('1',10),('12',10),('0',10),('ABCDE',50),('023',10)]
 
-user_answers = ['' for _ in range(len(solutions))] #initialize as empty string
-# user_answers[4]='ABC D'
+# user_answers keeps track of answers/selections user made and reflects on frontend
+# it initialize as empty string
+user_answers = ['' for _ in range(len(solutions))] 
+
+# learning_stage keeps track of the visit time for start/finish page for each section
+# Its format is `stage: [start_page_id, start_time], [finish_page_id, finish_time]``
+learning_stage = {
+    "Ear":{"start":[1,None], "finish":[3,None]},
+    "Eye":{"start":[4,None], "finish":[6,None]},
+    "Tail":{"start":[7,None], "finish":[11,None]},
+}
 
 # ROUTES
 @app.route('/')
 def home():
    return render_template("home.html")
 
+################## Learn #########################
 @app.route('/learn/<id>')
 def learn(id):
-   return render_template('learn.html', data=learnData[id], id=id)
+   global learning_stage
+   return render_template('learn.html', data=learnData[id], id=id, learning_stage=learning_stage)
 
+@app.route('/update_learning_stage', methods=['POST'])
+def update_learning_stage():
+    global learning_stage
+    json_data = request.get_json()
+    learning_stage = json_data
+    return jsonify(data = "success")
+
+################## Quiz #########################
 @app.route('/quiz/<id>')
 def quiz(id=0):
     global user_answers, solutions
