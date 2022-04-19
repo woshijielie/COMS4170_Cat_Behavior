@@ -4,85 +4,75 @@ from flask import render_template
 from flask import Response, request, jsonify
 app = Flask(__name__)
 
-learnData = [
-   {
-      "id": 1,
+learnData = {
+   "1": {
       "part": "Ear",
       "behavior": "Slightly Bent Forward",
       "explanation": "The cat is telling you what it is playful and curious ",
       "example": "When the cat is given a new toy or seen a new thing",
    },
-   {
-      "id": 2,
+   "2": {
       "part": "Ear",
       "behavior": "Straight and Upright",
       "explanation": "Something has got your cat’s attention ",
       "example": "Animal in the wild do this instinctively so they could hear more and ascertain if a coming sound means danger or not.",
    },
-   {
-      "id": 3,
+   "3": {
       "part": "Ear",
       "behavior": "Pinned Back and Flat",
       "explanation": "The cat is very angry at something or maybe at you.",
       "example": "This gesture is most often followed by hissing or growling.",
    },
-   {
-      "id": 4,
+   "4": {
       "part": "Eye",
       "behavior": "Stares at You and Slowly Blinks Its Eyes",
       "explanation": "It simply means the cat adores you.",
       "example": "Humans are even fond of this slow blinking of the eyes especially when flirting with someone they admire.",
    },
-   {
-      "id": 5,
+   "5": {
       "part": "Eye",
       "behavior": "Dilated Pupils",
       "explanation": "A sign of excitement. When cats get excited, their pupils dilate and become larger, telling you it is excited and ready to play.",
       "example": "Often be observed when the cat is happily playing with or attacking a toy. Sometimes it can also mean defensiveness or aggression especially the look is accompanied by hissing or growling sound.",
    },
-   {
-      "id": 6,
+   "6": {
       "part": "Eye",
       "behavior": "Looks at You with a Slit",
       "explanation": "It's definitely angry with you over something.",
       "example": "Often given in the absence of an expected treact.",
    },
-   {
-      "id": 7,
+   "7": {
       "part": "Tail",
       "behavior": "Tail Wagging",
       "explanation": "A sign of frustration in the feline family rather than excitement as common with other pets.",
       "example": "When your cat wags its tail, it probably isn't happy about something. And you better avoid petting them at that instance as it can lead to a few scratches.",
    },
-   {
-      "id": 8,
+   "8": {
       "part": "Tail",
       "behavior": "Puffed Up Tail",
       "explanation": "It most often is frighten of something. And if  followed by hissing sound then it is preparing for attack.",
       "example": "The cat displays “Larger-than-life” attitude and sends signal to the enemy that it is scary to deal with.",
    },
-   {
-      "id": 9,
+   "9": {
       "part": "Tail",
       "behavior": "Curved Tail",
       "explanation": "A sign of curiosity in cats when cats have their tail curved like the question mark sign.",
       "example": "It means they are ready to explore. If you've been looking for a good time to explore your cat to a new toy or activity, whenever the tail is curved might be a good time.",
    },
-   {
+   "10": {
       "id": 10,
       "part": "Tail",
       "behavior": "Twitching of the Tail",
       "explanation": "Cats twitch their tails when they are ready or excited to play.",
       "example": "It is quite similar to tail wagging but often involves lots of flicks of the tail at its tip.",
    },
-   {
-      "id": 11,
+   "11": {
       "part": "Tail",
       "behavior": "Tucked Away Tail",
       "explanation": "It is very nervous if it tucks its tail.",
       "example": "Running with tails in-between ones legs has always been an idiom for submission and anxiety.",
    },
-]
+}
 
 
 data = {
@@ -137,6 +127,14 @@ user_answers = ['' for _ in range(len(solutions))] #initialize as empty string
 # user_answers[4]='ABC D'
 
 # ROUTES
+@app.route('/')
+def home():
+   return render_template("home.html")
+
+@app.route('/learn/<id>')
+def learn(id):
+   return render_template('learn.html', data=learnData[id], id=id)
+
 @app.route('/quiz/<id>')
 def quiz(id=0):
     global user_answers, solutions
