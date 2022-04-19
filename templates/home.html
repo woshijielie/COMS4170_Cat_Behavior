@@ -1,8 +1,51 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block content %}
 
-{% block content %}
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename = 'home.js') }}"
+></script>
 
-    <div>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="nav-container">
+    <div class="nav-title">LOVELY CAT</div>
+  </div>
+</nav>
+
+<div class="center">
+  <div class="title big">Do you want to know more about me?</div>
+  <div>
+    <img
+      src="https://4170img.s3.amazonaws.com/home.jpg"
+      width="400"
+      height="400"
+      alt="cats"
+      usemap="#catMap"
+    />
+    <map name="catMap">
+      <area shape="rect" coords="63,58,113,118" alt="ear" href="/learn/1" />
+      <area shape="circle" coords="222,110,31" alt="ear" href="/learn/1" />
+      <area shape="circle" coords="114,174,17" alt="eye" href="/learn/4" />
+      <area shape="circle" coords="181,182,17" alt="eye" href="/learn/4" />
+      <area shape="rect" coords="57,254,294,370" alt="body" href="/learn/12" />
+      <area shape="rect" coords="364,12,254,169" alt="body" href="/learn/7" />
+    </map>
+  </div>
+  <div>
+    <button
+      type="button"
+      class="btn btn-primary btn-lg home_button"
+      onclick="location.href='/learn/1'"
+    >
+      Explore
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary btn-lg home_button"
+      onclick="clickQuiz()"
+    >
+      Quiz
+    </button>
+  </div>
+</div>
 
 {% endblock %}

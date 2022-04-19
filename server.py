@@ -4,85 +4,108 @@ from flask import render_template
 from flask import Response, request, jsonify
 app = Flask(__name__)
 
-learnData = [
-   {
-      "id": 1,
+learnData = {
+   "1": {
       "part": "Ear",
       "behavior": "Slightly Bent Forward",
       "explanation": "The cat is telling you what it is playful and curious ",
       "example": "When the cat is given a new toy or seen a new thing",
+      "img": "https://4170img.s3.amazonaws.com/earBent.jpg",
+      "gif": "https://4170gif.s3.amazonaws.com/earBent.gif",
    },
-   {
-      "id": 2,
+   "2": {
       "part": "Ear",
       "behavior": "Straight and Upright",
       "explanation": "Something has got your cat’s attention ",
       "example": "Animal in the wild do this instinctively so they could hear more and ascertain if a coming sound means danger or not.",
+      "img": "https://4170img.s3.amazonaws.com/EarStraight.jpg",
+      "gif": "https://4170gif.s3.amazonaws.com/earStraight.gif",
    },
-   {
-      "id": 3,
+   "3": {
       "part": "Ear",
       "behavior": "Pinned Back and Flat",
       "explanation": "The cat is very angry at something or maybe at you.",
       "example": "This gesture is most often followed by hissing or growling.",
+      "img": "https://4170img.s3.amazonaws.com/EarPinBack.jpg",
+      "gif": "https://4170gif.s3.amazonaws.com/earPinnedBack.gif"
    },
-   {
-      "id": 4,
+   "4": {
       "part": "Eye",
       "behavior": "Stares at You and Slowly Blinks Its Eyes",
       "explanation": "It simply means the cat adores you.",
       "example": "Humans are even fond of this slow blinking of the eyes especially when flirting with someone they admire.",
+      "img": "https://4170img.s3.amazonaws.com/EyeStare.jpg",
+      "gif": "https://4170gif.s3.amazonaws.com/eyeStare.gif"
    },
-   {
-      "id": 5,
+   "5": {
       "part": "Eye",
       "behavior": "Dilated Pupils",
       "explanation": "A sign of excitement. When cats get excited, their pupils dilate and become larger, telling you it is excited and ready to play.",
       "example": "Often be observed when the cat is happily playing with or attacking a toy. Sometimes it can also mean defensiveness or aggression especially the look is accompanied by hissing or growling sound.",
+      "img": "https://4170img.s3.amazonaws.com/EyeDelate.jpg",
+      "gif": "https://4170gif.s3.amazonaws.com/eyeDilated.gif",
    },
-   {
-      "id": 6,
+   "6": {
       "part": "Eye",
       "behavior": "Looks at You with a Slit",
       "explanation": "It's definitely angry with you over something.",
       "example": "Often given in the absence of an expected treact.",
+      "img": "https://4170img.s3.amazonaws.com/EyeSlit.jpg",
+      "gif": "https://4170gif.s3.amazonaws.com/eyeSlit.gif",
    },
-   {
-      "id": 7,
+   "7": {
       "part": "Tail",
       "behavior": "Tail Wagging",
       "explanation": "A sign of frustration in the feline family rather than excitement as common with other pets.",
       "example": "When your cat wags its tail, it probably isn't happy about something. And you better avoid petting them at that instance as it can lead to a few scratches.",
+      "img": "https://4170img.s3.amazonaws.com/TailWagging.jpg",
+      "gif": "https://4170gif.s3.amazonaws.com/tailWagging.gif",
    },
-   {
-      "id": 8,
+   "8": {
       "part": "Tail",
       "behavior": "Puffed Up Tail",
       "explanation": "It most often is frighten of something. And if  followed by hissing sound then it is preparing for attack.",
       "example": "The cat displays “Larger-than-life” attitude and sends signal to the enemy that it is scary to deal with.",
+      "img": "https://4170img.s3.amazonaws.com/TailPuffUp.jpg",
+      "gif": "https://4170gif.s3.amazonaws.com/taiPuffUp.gif"
    },
-   {
-      "id": 9,
+   "9": {
       "part": "Tail",
       "behavior": "Curved Tail",
       "explanation": "A sign of curiosity in cats when cats have their tail curved like the question mark sign.",
       "example": "It means they are ready to explore. If you've been looking for a good time to explore your cat to a new toy or activity, whenever the tail is curved might be a good time.",
+      "img": "https://4170img.s3.amazonaws.com/TailCurved.jpg",
+      "gif": "https://4170gif.s3.amazonaws.com/tailCurved.gif"
    },
-   {
-      "id": 10,
+   "10": {
       "part": "Tail",
       "behavior": "Twitching of the Tail",
       "explanation": "Cats twitch their tails when they are ready or excited to play.",
       "example": "It is quite similar to tail wagging but often involves lots of flicks of the tail at its tip.",
+      "img": "https://4170img.s3.amazonaws.com/TailTwitching.jpg",
+      "gif": "https://4170gif.s3.amazonaws.com/TailTwitching.gif"
    },
-   {
-      "id": 11,
+   "11": {
       "part": "Tail",
       "behavior": "Tucked Away Tail",
       "explanation": "It is very nervous if it tucks its tail.",
       "example": "Running with tails in-between ones legs has always been an idiom for submission and anxiety.",
+      "img": "https://4170img.s3.amazonaws.com/TailTuckedAway.jpg",
+      "gif": "https://4170gif.s3.amazonaws.com/TailTuckedAway.gif"
    },
-]
+   "12": {
+      "part": "Body",
+      "video": "https://www.youtube.com/embed/rb2xTAHVqjs"
+   },
+   "13": {
+      "part": "More",
+      "videos": [
+         "https://www.youtube.com/watch?v=IzlJmxberJc",
+         "https://www.youtube.com/watch?v=DFOCLSCANaI",
+         "https://www.youtube.com/watch?v=tURs6OlKcvw"
+      ]
+   }
+}
 
 
 data = {
@@ -137,6 +160,14 @@ user_answers = ['' for _ in range(len(solutions))] #initialize as empty string
 # user_answers[4]='ABC D'
 
 # ROUTES
+@app.route('/')
+def home():
+   return render_template("home.html")
+
+@app.route('/learn/<id>')
+def learn(id):
+   return render_template('learn.html', data=learnData[id], id=id)
+
 @app.route('/quiz/<id>')
 def quiz(id=0):
     global user_answers, solutions

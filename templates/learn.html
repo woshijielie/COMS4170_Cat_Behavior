@@ -2,24 +2,22 @@
 
 <script
   type="text/javascript"
-  src="{{ url_for('static', filename = 'quiz.js') }}"
+  src="{{ url_for('static', filename = 'learn.js') }}"
 ></script>
 
 <script>
   let data = {{data | tojson}};
   let id = {{ id }}
-  let user_answers = {{user_answers | tojson}}
-  let score = {{score | tojson}}
-  console.log(data, id, user_answers, score)
+  console.log(data, id)
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="nav-container">
     <div class="nav-title"><a href="/">LOVELY CAT</a></div>
-    <div class="nav-section">Quiz</div>
+    <div class="nav-section" id="part"></div>
   </div>
 </nav>
 
-<div id="quiz_container"></div>
+<div id="learn_container"></div>
 
 {% endblock %}
