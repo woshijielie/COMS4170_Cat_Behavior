@@ -50,11 +50,25 @@ data = {
               'https://static-cdn.jtvnw.net/jtv_user_pictures/b6be9ae8-3433-4a32-bc20-a749781ca0f5-profile_banner-480-320x160.jpeg']}
 }
 
+solutions = [('0',10),('1',10),('12',10),('0',10),('01234',50),('023',10)] #stringfy index of correct objects
+
+user_answers = ['0' for _ in range(len(solutions))] #initialize as empty string
+user_answers[4]='012 4'
 
 # ROUTES
 @app.route('/quiz/<id>')
 def quiz(id=None):
-    return render_template("quiz.html", data=data[id], id=id)
+    global user_answers
+    score=0
+    if id==7: #compute score for score page
+        for i in range(len(solutions)):
+            # give partial credits
+            solution_set = set(solutions[i][0])
+            answer_set = set(user_answers[i])
+            correct_set = solution_set.intersection(answer_set)
+            score+=solutions[i][1]/len(solutions[i][0])*len(correct_set)
+    print(score)
+    return render_template("quiz.html", data=data[id], id=id, user_answers=user_answers, score=score)
 
 
 if __name__ == '__main__':
