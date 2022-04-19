@@ -129,7 +129,8 @@ function display6(choices,answer){
     $("#quiz_container").append(body_div)
 }
 
-function display7(img){
+function display7(img, score){
+    $("#quiz_7_body").prepend("<h1>Quiz Score: "+score+"</h1><br>")
     let body_div = $("<div id='quiz_7_container'></div>")
     let new_img= $("<img class='quiz7_img' src='" + img[0] + "'>")
     $(body_div).append(new_img)
@@ -212,7 +213,7 @@ $(document).ready(function(){
     } else if (id == 6) {
             display6(data['choices'], user_answers[id-1])
     } else{
-        display7(data['images'])
+        display7(data['images'],score)
     }
     //update user answers
     update_answers(id, user_answers);

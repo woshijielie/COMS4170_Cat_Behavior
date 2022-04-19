@@ -151,7 +151,7 @@ def quiz(id=0):
             correct_set = solution_set.intersection(answer_set)
             score+=solutions[i][1]/len(solutions[i][0])*len(correct_set)
             print(solutions[i][1]/len(solutions[i][0])*len(correct_set))
-    print(score)
+    score = int(score)
     return render_template("quiz.html", data=data[id], id=id, user_answers=user_answers, score=score)
 
 @app.route('/update_user_answers', methods=['POST'])
