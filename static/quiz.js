@@ -35,19 +35,25 @@ function addQuestion(data, id){
     }
 }
 
-function display123(data, id){
+function display123(data, id, answer) {
     let body_div = $("<div id='quiz_" + id + "_container'></div>")
+    
     $.each(data, function(index, value){
         let name = "Q" + id + index
         let new_img= $("<input type='checkbox' name='" + name + "' class='quiz" + id +"_img'" +
-            "id='" + name + "'/><label for='" + name + "'></label>")
+                "id='" + name + "'/><label for='" + name + "'></label>")
+        // check selections user has made
+        if(answer.includes(index.toString())){
+            new_img.prop('checked', true)
+            console.log('Selected:'+index.toString())
+        }
         $(new_img).css("background-image", "url('" + value + "')")
         $(body_div).append(new_img)
         $("#quiz_container").append(body_div)
     })
 }
 
-function display4(img, choices){
+function display4(img, choices, answer){
     let body_div = $("<div id='quiz_4_container'></div>")
     let img_div = $("<div id='quiz_4_img_container'></div>")
     let choice_div = $("<div id='quiz_4_choices_container'></div>")
@@ -57,6 +63,11 @@ function display4(img, choices){
         let name = "Q4" + index
         let new_choice= $("<input type='checkbox' name='" + name + "' class='quiz4_choice'" +
             "id='" + name + "'/><label for='" + name + "'>" + value + "</label><br>")
+        // check selections user has made
+        if(answer.includes(index.toString())){
+            new_choice.prop('checked', true)
+            console.log('Selected:'+index.toString())
+        }
         $(choice_div).append(new_choice)
     })
     $(body_div).append(img_div)
@@ -64,7 +75,7 @@ function display4(img, choices){
     $("#quiz_container").append(body_div)
 }
 
-function display5(img, choices, audios){
+function display5(img, choices, audios, answer){
     let body_div = $("<div id='quiz_5_container'></div>")
     let player_div = $("<div id='quiz_5_player_container'></div>")
     let choice_div = $("<div id='quiz_5_choices_container'></div>")
@@ -77,9 +88,14 @@ function display5(img, choices, audios){
         if(type == "audio/mp3"){
             type = "audio/mpeg"
         }
+        
         let new_player= $("<input type='text' name='" + player_name + "' class='quiz5_input'" +
             "id='" + player_name + "' maxlength='1' size='2'/><label for='" + player_name + "'>" + key + "</label>" +
             "<img src='" + img + "' class='quiz5_img' id='quiz5_img" + i + "'><br>")
+        // show user ansers have made to server
+        if(answer[i]!=" "){
+            new_player.val(answer[i])
+        }
         $(player_div).append(new_player)
         let new_audio = $("<audio id='" + audio_name + "'><source src='" + value +
             "' type='" + type + "'></audio>")
@@ -97,12 +113,17 @@ function display5(img, choices, audios){
     $("#quiz_container").append(body_div)
 }
 
-function display6(choices){
+function display6(choices,answer){
     let body_div = $("<div id='quiz_6_container'></div>")
     $.each(choices, function(index, value){
         let name = "Q6" + index
         let new_choice= $("<input type='checkbox' name='" + name + "' class='quiz_6_choice'" +
             "id='" + name + "'/><label for='" + name + "'>" + value + "</label><br>")
+        // check selections user has made
+        if(answer.includes(index.toString())){
+            new_choice.prop('checked', true)
+            console.log('Selected:'+index.toString())
+        }
         $(body_div).append(new_choice)
     })
     $("#quiz_container").append(body_div)
@@ -120,17 +141,17 @@ $(document).ready(function(){
     addButton(id)
     addQuestion(data['question'], id)
     if (id == 1 || id == 2 || id == 3) {
-        display123(data['images'], id)
+        display123(data['images'], id, user_answers[id-1])
     } else if (id == 4) {
-        display4(data['images'], data['choices'])
+        display4(data['images'], data['choices'], user_answers[id-1])
     } else if (id == 5) {
-        display5(data['images'], data['choices'], data['audios'])
+        display5(data['images'], data['choices'], data['audios'], user_answers[id-1])
         $(document).on('click', '.quiz5_img', function (event) {
             let id = $(this).attr("id").substr($(this).attr("id").length - 1)
             $("#Q5A" + id)[0].play()
         })
     } else if (id == 6) {
-            display6(data['choices'])
+            display6(data['choices'], user_answers[id-1])
     } else{
         display7(data['images'])
     }
