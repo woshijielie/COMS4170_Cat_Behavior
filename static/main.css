@@ -50,7 +50,7 @@ input[type=text] {
     border-style: solid;
     margin: 10px 20px 10px;
 }
-.quiz1_img + label{
+.quiz1_choice + label{
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -60,7 +60,7 @@ input[type=text] {
     display:inline-block;
     margin: 40px 50px 40px;
 }
-.quiz1_img:checked + label{
+.quiz1_choice:checked + label{
     border-color: red;
     border-style: solid;
     background-size: 100%;
@@ -72,7 +72,7 @@ input[type=text] {
     display:inline-block;
     margin: 40px 50px 40px;
 }
-.quiz2_img + label{
+.quiz2_choice + label{
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -81,7 +81,7 @@ input[type=text] {
     width: 250px;
     margin: 40px 50px 0px;
 }
-.quiz2_img:checked + label{
+.quiz2_choice:checked + label{
     border-color: red;
     border-style: solid;
     background-size: 100%;
@@ -92,7 +92,7 @@ input[type=text] {
     width: 250px;
     margin: 40px 50px 0px;
 }
-.quiz3_img + label{
+.quiz3_choice + label{
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -101,7 +101,7 @@ input[type=text] {
     width: 280px;
     margin: 40px 160px 0px;
 }
-.quiz3_img:checked + label{
+.quiz3_choice:checked + label{
     border-color: red;
     border-style: solid;
     background-size: 100%;
@@ -163,15 +163,15 @@ input[type=text] {
 .quiz5_choice{
     height: 30px;
 }
-#quiz_6_container{
+#quiz_6_choices_container{
     margin: 40px 150px 0px;
 }
-.quiz_6_choice + label{
+.quiz6_choice + label{
     height: 80px;
     width: 1100px;
     font-size: 23px;
 }
-.quiz_6_choice:checked + label{
+.quiz6_choice:checked + label{
     border-color: red;
     border-style: solid;
     height: 80px;

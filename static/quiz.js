@@ -36,11 +36,11 @@ function addQuestion(data, id){
 }
 
 function display123(data, id, answer) {
-    let body_div = $("<div id='quiz_" + id + "_container'></div>")
+    let body_div = $("<div id='quiz_" + id + "_choices_container'></div>")
     
     $.each(data, function(index, value){
         let name = "Q" + id + index
-        let new_img= $("<input type='checkbox' name='" + name + "' class='quiz" + id +"_img'" +
+        let new_img= $("<input type='checkbox' name='" + name + "' class='quiz" + id +"_choice'" +
                 "id='" + name + "'/><label for='" + name + "'></label>")
         // check selections user has made
         if(answer.includes(index.toString())){
@@ -92,7 +92,7 @@ function display5(img, choices, audios, answer){
         let new_player= $("<input type='text' name='" + player_name + "' class='quiz5_input'" +
             "id='" + player_name + "' maxlength='1' size='2'/><label for='" + player_name + "'>" + key + "</label>" +
             "<img src='" + img + "' class='quiz5_img' id='quiz5_img" + i + "'><br>")
-        // show user ansers have made to server
+        // show user ansers stored
         if(answer[i]!=" "){
             new_player.val(answer[i])
         }
@@ -114,10 +114,10 @@ function display5(img, choices, audios, answer){
 }
 
 function display6(choices,answer){
-    let body_div = $("<div id='quiz_6_container'></div>")
+    let body_div = $("<div id='quiz_6_choices_container'></div>")
     $.each(choices, function(index, value){
         let name = "Q6" + index
-        let new_choice= $("<input type='checkbox' name='" + name + "' class='quiz_6_choice'" +
+        let new_choice= $("<input type='checkbox' name='" + name + "' class='quiz6_choice'" +
             "id='" + name + "'/><label for='" + name + "'>" + value + "</label><br>")
         // check selections user has made
         if(answer.includes(index.toString())){
@@ -134,6 +134,44 @@ function display7(img){
     let new_img= $("<img class='quiz7_img' src='" + img[0] + "'>")
     $(body_div).append(new_img)
     $("#quiz_container").append(body_div)
+}
+
+
+function update_answers(qid, user_answers) {
+    let class_name = '.quiz'+qid+'_choice';
+    let id = qid-1; // index in user_answers data structure
+
+    if (qid == 5) {
+        class_name = '.quiz5_input';
+        $(document).on('change', '#quiz_5_player_container', function (event) {
+            console.log('... changing answers on quiz'+qid);
+            user_answers[id] = '';
+            $(class_name).each((index, element) => {
+                user_answers[id]=user_answers[id].concat($(element).val());
+                if ($(element).val()==''){
+                    user_answers[id]=user_answers[id].concat(' ');
+                }
+            });
+            console.log(user_answers)
+        })
+    } else {
+        // other cases
+        console.log(class_name);
+        $(document).on('click', '#quiz_'+qid+'_choices_container', function (event) {
+            console.log('... clicking on quiz'+qid);
+            user_answers[id] = '';
+            $(class_name).each((index, element) => {
+                console.log(index, element);
+                    if($(element).is(":checked")) {
+                        user_answers[id]=user_answers[id].concat(index.toString());
+                    }
+                });
+                console.log(user_answers);
+        })
+    }
+
+    // update to flask with ajax
+    update_answers_to_server(user_answers)
 }
 
 $(document).ready(function(){
@@ -155,4 +193,7 @@ $(document).ready(function(){
     } else{
         display7(data['images'])
     }
+    //update user answers
+    update_answers(id, user_answers);
+
 })

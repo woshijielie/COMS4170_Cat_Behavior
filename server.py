@@ -131,10 +131,10 @@ data = {
               'https://static-cdn.jtvnw.net/jtv_user_pictures/b6be9ae8-3433-4a32-bc20-a749781ca0f5-profile_banner-480-320x160.jpeg']}
 }
 
-solutions = [('0',10),('1',10),('12',10),('0',10),('01234',50),('023',10)] #stringfy index of correct objects
+solutions = [('0',10),('1',10),('12',10),('0',10),('ABCDE',50),('023',10)] #stringfy index of correct objects expert q5 is char
 
 user_answers = ['0' for _ in range(len(solutions))] #initialize as empty string
-user_answers[4]='012 4'
+user_answers[4]='ABC D'
 
 # ROUTES
 @app.route('/quiz/<id>')
