@@ -163,25 +163,25 @@ input[type=text] {
 .quiz5_choice{
     height: 30px;
 }
-#quiz_review_container{
+#quiz_6_container{
     margin: 40px 150px 0px;
 }
-.quiz_review_choice + label{
+.quiz_6_choice + label{
     height: 80px;
     width: 1100px;
     font-size: 23px;
 }
-.quiz_review_choice:checked + label{
+.quiz_6_choice:checked + label{
     border-color: red;
     border-style: solid;
     height: 80px;
     width: 1100px;
     font-size: 23px;
 }
-#quiz_end_container{
+#quiz_7_container{
     text-align: center;
 }
-.quiz_end_img{
+.quiz7_img{
     height: 300px;
     width: auto;
 }
@@ -194,7 +194,7 @@ input[type=text] {
     font-size: 25px;
     margin-top: 30px;
 }
-#quiz_end_body{
+#quiz_7_body{
     font-size: 40px;
     padding: 30px 150px 40px;
 }
