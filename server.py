@@ -133,24 +133,33 @@ data = {
 
 solutions = [('0',10),('1',10),('12',10),('0',10),('ABCDE',50),('023',10)] #stringfy index of correct objects expert q5 is char
 
-user_answers = ['0' for _ in range(len(solutions))] #initialize as empty string
-user_answers[4]='ABC D'
+user_answers = ['' for _ in range(len(solutions))] #initialize as empty string
+# user_answers[4]='ABC D'
 
 # ROUTES
 @app.route('/quiz/<id>')
-def quiz(id=None):
-    global user_answers
+def quiz(id=0):
+    global user_answers, solutions
     score=0
-    if id==7: #compute score for score page
+    #compute score only for score page: /quiz/7
+    qid = int(id)
+    if qid==7:
         for i in range(len(solutions)):
             # give partial credits
             solution_set = set(solutions[i][0])
             answer_set = set(user_answers[i])
             correct_set = solution_set.intersection(answer_set)
             score+=solutions[i][1]/len(solutions[i][0])*len(correct_set)
+            print(solutions[i][1]/len(solutions[i][0])*len(correct_set))
     print(score)
     return render_template("quiz.html", data=data[id], id=id, user_answers=user_answers, score=score)
 
+@app.route('/update_user_answers', methods=['POST'])
+def update_user_answers():
+    global user_answers
+    json_data = request.get_json()
+    user_answers = json_data
+    return jsonify(data = "success")
 
 if __name__ == '__main__':
    app.run(debug = True)

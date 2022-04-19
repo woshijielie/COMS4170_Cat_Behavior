@@ -136,6 +136,26 @@ function display7(img){
     $("#quiz_container").append(body_div)
 }
 
+function update_answers_to_server(user_answers) {
+    $.ajax({
+        type: "POST",
+        url: "/update_user_answers",
+        dataType : "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(user_answers),
+        success: function (response) {
+            console.log("success");
+            console.log(response);
+        },
+        error: function(request, status, error){
+            console.log("Error");
+            console.log(request)
+            console.log(status)
+            console.log(error)
+        }
+    });
+}
+
 
 function update_answers(qid, user_answers) {
     let class_name = '.quiz'+qid+'_choice';
@@ -152,7 +172,9 @@ function update_answers(qid, user_answers) {
                     user_answers[id]=user_answers[id].concat(' ');
                 }
             });
-            console.log(user_answers)
+            console.log(user_answers);
+            // update to flask with ajax
+            update_answers_to_server(user_answers);
         })
     } else {
         // other cases
@@ -166,12 +188,11 @@ function update_answers(qid, user_answers) {
                         user_answers[id]=user_answers[id].concat(index.toString());
                     }
                 });
-                console.log(user_answers);
+            console.log(user_answers);
+            // update to flask with ajax
+            update_answers_to_server(user_answers);
         })
     }
-
-    // update to flask with ajax
-    update_answers_to_server(user_answers)
 }
 
 $(document).ready(function(){
