@@ -5,6 +5,11 @@
   src="{{ url_for('static', filename = 'home.js') }}"
 ></script>
 
+<script>
+  let learning_stage = {{learning_stage | tojson}};
+  console.log(learning_stage)
+</script>
+
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="nav-container">
     <div class="nav-title">LOVELY CAT</div>

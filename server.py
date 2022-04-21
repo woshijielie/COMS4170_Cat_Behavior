@@ -170,9 +170,10 @@ learning_stage = {
 }
 
 # ROUTES
+################## Home #########################
 @app.route('/')
 def home():
-   return render_template("home.html")
+   return render_template("home.html", learning_stage=learning_stage)
 
 ################## Learn #########################
 @app.route('/learn/<id>')
@@ -188,23 +189,34 @@ def update_learning_stage():
     return jsonify(data = "success")
 
 ################## Quiz #########################
+# this route renders quiz pages and renders users' past answers/selections
 @app.route('/quiz/<id>')
 def quiz(id=0):
-    global user_answers, solutions
-    score=0
-    #compute score only for score page: /quiz/7
-    qid = int(id)
-    if qid==7:
-        for i in range(len(solutions)):
-            # give partial credits
-            solution_set = set(solutions[i][0])
-            answer_set = set(user_answers[i])
-            correct_set = solution_set.intersection(answer_set)
-            score+=solutions[i][1]/len(solutions[i][0])*len(correct_set)
-            print(solutions[i][1]/len(solutions[i][0])*len(correct_set))
-    score = int(score)
-    return render_template("quiz.html", data=data[id], id=id, user_answers=user_answers, score=score)
+   global user_answers
+   return render_template("quiz.html", data=data[id], id=id, user_answers=user_answers)
 
+# this routes renders both solution and users' answer, and users should not make selections any more
+@app.route('/solution/<id>')
+def solution(id=0):
+   global user_answers, solutions
+   return render_template("solution.html", data=data[id], id=id, user_answers=user_answers, solutions=solutions)
+
+# this route returns back a list of scores and the last one is total score
+@app.route('/quiz/score')
+def score():
+   global user_answers, solutions
+   score=[0 for _ in range(len(solutions)+1)] # list (score for each quiz + final quiz)
+   for i in range(len(solutions)):
+      # give partial credits
+      solution_set = set(solutions[i][0])
+      answer_set = set(user_answers[i])
+      correct_set = solution_set.intersection(answer_set)
+      score[i]= int(solutions[i][1]/len(solutions[i][0])*len(correct_set))
+   score[-1]=sum(score[:len(solutions)])
+   print(score)
+   return render_template("quiz-score.html", score=score)
+
+# used for ajax to update user answers
 @app.route('/update_user_answers', methods=['POST'])
 def update_user_answers():
     global user_answers
