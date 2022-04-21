@@ -170,9 +170,10 @@ learning_stage = {
 }
 
 # ROUTES
+################## Home #########################
 @app.route('/')
 def home():
-   return render_template("home.html")
+   return render_template("home.html", learning_stage=learning_stage)
 
 ################## Learn #########################
 @app.route('/learn/<id>')
@@ -196,9 +197,9 @@ def quiz(id=0):
 
 # this routes renders both solution and users' answer, and users should not make selections any more
 @app.route('/solution/<id>')
-def quiz(id=0):
+def solution(id=0):
    global user_answers, solutions
-   return render_template("quiz.html", data=data[id], id=id, user_answers=user_answers, solutions=solutions)
+   return render_template("solution.html", data=data[id], id=id, user_answers=user_answers, solutions=solutions)
 
 # this route returns back a list of scores and the last one is total score
 @app.route('/quiz/score')
