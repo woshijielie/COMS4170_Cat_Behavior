@@ -164,9 +164,10 @@ user_answers = ['' for _ in range(len(solutions))]
 # learning_stage keeps track of the visit time for start/finish page for each section
 # Its format is `stage: [start_page_id, start_time], [finish_page_id, finish_time]``
 learning_stage = {
-    "Ear":{"start":[1,None], "finish":[3,None]},
-    "Eye":{"start":[4,None], "finish":[6,None]},
-    "Tail":{"start":[7,None], "finish":[11,None]},
+    "ear":{"start":[1,None], "finish":[3,None]},
+    "eye":{"start":[4,None], "finish":[6,None]},
+    "tail":{"start":[7,None], "finish":[11,None]},
+    "body":{"start":[12,None], "finish":[12,None]},
 }
 
 # ROUTES

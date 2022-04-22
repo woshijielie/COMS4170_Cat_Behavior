@@ -135,16 +135,17 @@ $(document).ready(function () {
   } else {
     // record timestamp if it's start/end page for each section (ear, eye, tail)
     let visit_time = Math.floor(Date.now() / 1000);//ts in second
-    if (id==learning_stage[data["part"]]["start"][0]) {
-      console.log(data["part"]+" start page: "+id);
+    let part = data["part"].toLowerCase()
+    if (id==learning_stage[part]["start"][0]) {
+      console.log(part+" start page: "+id);
       // keep the earliest timestamp so avoid overwriting
-      if (learning_stage[data["part"]]["start"][1] == null) {
-        learning_stage[data["part"]]["start"][1]=visit_time;
+      if (learning_stage[part.toLowerCase()]["start"][1] == null) {
+        learning_stage[part]["start"][1]=visit_time;
       }
-    } else if (id==learning_stage[data["part"]]["finish"][0]) {
-      console.log(data["part"]+" last page: "+id);
+    } else if (id==learning_stage[part]["finish"][0]) {
+      console.log(part+" last page: "+id);
       // always overwrite to keep the most recent finish ts
-      learning_stage[data["part"]]["finish"][1]=visit_time;
+      learning_stage[part]["finish"][1]=visit_time;
     }
     update_learning_stage_to_server(learning_stage);
 
