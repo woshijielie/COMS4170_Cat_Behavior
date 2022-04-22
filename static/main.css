@@ -8,6 +8,7 @@
   font-size: 30px;
   font-weight: normal;
 }
+
 .nav-section {
   position: relative;
   left: 110%;
@@ -226,4 +227,10 @@ input[type="text"] {
 #quiz_7_body {
   font-size: 40px;
   padding: 30px 150px 40px;
+}
+
+#home_cat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

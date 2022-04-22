@@ -4,3 +4,7 @@ function clickQuiz() {
     window.location.href = "/quiz/1";
   }
 }
+
+$(function() {
+  $('#cat').maphilight();
+});
