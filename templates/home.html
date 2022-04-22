@@ -1,4 +1,8 @@
 {% extends "layout.html" %} {% block content %}
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename = 'maphilight.js') }}"
+></script>
 
 <script
   type="text/javascript"
@@ -18,8 +22,9 @@
 
 <div class="center">
   <div class="title big">Do you want to know more about me?</div>
-  <div>
+  <div id="home_cat">
     <img
+      id="cat"
       src="https://4170img.s3.amazonaws.com/home.jpg"
       width="400"
       height="400"
@@ -27,14 +32,15 @@
       usemap="#catMap"
     />
     <map name="catMap">
-      <area shape="rect" coords="63,58,113,118" alt="ear" href="/learn/1" />
-      <area shape="circle" coords="222,110,31" alt="ear" href="/learn/1" />
-      <area shape="circle" coords="114,174,17" alt="eye" href="/learn/4" />
-      <area shape="circle" coords="181,182,17" alt="eye" href="/learn/4" />
-      <area shape="rect" coords="57,254,294,370" alt="body" href="/learn/12" />
-      <area shape="rect" coords="364,12,254,169" alt="body" href="/learn/7" />
+      <area shape="rect" class="ear" coords="63,58,113,118" alt="ear" data-maphilight='{"alwaysOn":true,"stroke":false}' href="/learn/1" />
+      <area shape="circle" class="ear" coords="222,110,31" alt="ear" data-maphilight='{"alwaysOn":true,"stroke":false}' href="/learn/1" />
+      <area shape="circle" class="eye" coords="114,174,17" alt="eye" data-maphilight='{"alwaysOn":true,"stroke":false}' href="/learn/4" />
+      <area shape="circle" class="eye" coords="181,182,17" alt="eye" data-maphilight='{"alwaysOn":true,"stroke":false}' href="/learn/4" />
+      <area shape="rect" class="body" coords="57,254,294,370" alt="body" data-maphilight='{"alwaysOn":true,"stroke":false}' href="/learn/12" />
+      <area shape="rect" class="tail" coords="364,12,254,169" alt="tail" data-maphilight='{"alwaysOn":true,"stroke":false}' href="/learn/7" />
     </map>
   </div>
+  
   <div>
     <button
       type="button"
