@@ -114,6 +114,12 @@ input[type="text"] {
   display: inline-block;
   margin: 40px 50px 40px;
 }
+.solution1{
+  height: 250px;
+  width: 320px;
+  display: inline-block;
+  margin: 40px 50px 40px;
+}
 .quiz2_choice + label {
   background-size: 100%;
   background-size: cover;
@@ -121,6 +127,12 @@ input[type="text"] {
   background-position: center center;
   height: 200px;
   width: 250px;
+  margin: 40px 50px 0px;
+}
+.solution2{
+  height: 200px;
+  width: 250px;
+  display: inline-block;
   margin: 40px 50px 0px;
 }
 .quiz2_choice:checked + label {
@@ -140,6 +152,12 @@ input[type="text"] {
   background-position: center center;
   height: 220px;
   width: 280px;
+  margin: 40px 160px 0px;
+}
+.solution3{
+  height: 220px;
+  width: 280px;
+  display: inline-block;
   margin: 40px 160px 0px;
 }
 .quiz3_choice:checked + label {
@@ -169,7 +187,14 @@ input[type="radio"] {
 #quiz_4_container {
   margin: 40px 40px 0px;
 }
+#solution_4_container {
+  margin: 40px 40px 0px;
+}
 #quiz_4_img_container {
+  display: inline-block;
+  vertical-align: top;
+}
+#solution_4_img_container {
   display: inline-block;
   vertical-align: top;
 }
@@ -178,7 +203,15 @@ input[type="radio"] {
   vertical-align: top;
   margin-left: 80px;
 }
+#solution_4_choices_container {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 80px;
+}
 #quiz_5_container {
+  margin: 40px 80px 0px;
+}
+#solution_5_container {
   margin: 40px 80px 0px;
 }
 #quiz_5_player_container {
@@ -186,7 +219,19 @@ input[type="radio"] {
   vertical-align: top;
   font-size: 25px;
 }
+#solution_5_player_container {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 25px;
+}
 #quiz_5_choices_container {
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 5px;
+  margin-left: 40px;
+  font-size: 25px;
+}
+#solution_5_choices_container {
   display: inline-block;
   vertical-align: top;
   padding-top: 5px;
@@ -199,7 +244,19 @@ input[type="radio"] {
   vertical-align: top;
   padding-top: 3px;
 }
+#solution_5_left_container{
+  margin-left: 30px;
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 3px;
+}
 #quiz_5_right_container{
+  margin-left: 50px;
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 3px;
+}
+#solution_5_right_container{
   margin-left: 50px;
   display: inline-block;
   vertical-align: top;
@@ -253,10 +310,10 @@ input[type="radio"] {
   padding-top: -5px;
   position: relative;
 }
-#quiz_7_container {
+#end_container {
   text-align: center;
 }
-.quiz7_img {
+.end_img {
   height: 300px;
   width: auto;
 }
@@ -269,13 +326,25 @@ input[type="radio"] {
   font-size: 25px;
   margin-top: 30px;
 }
-#quiz_7_body {
+#end_body {
   font-size: 40px;
   padding: 30px 150px 40px;
+  text-align: left;
 }
 
 #home_cat {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#score_container{
+  text-align: center;
+  font-size: 25px;
+}
+table {
+  margin-top: 60px;
+  margin-left: 40px;
+  border-collapse: separate;
+  border-spacing: 300px 0;
 }

@@ -1,0 +1,23 @@
+{% extends "layout.html" %} {% block content %}
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename = 'quiz-score.js') }}"
+></script>
+
+<script>
+  let score = {{score | tojson}};
+  let solution = {{solution | tojson}};
+  console.log(solution)
+</script>
+
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="nav-container">
+    <div class="nav-title"><a href="/">LOVELY CAT</a></div>
+    <div class="nav-section">Score</div>
+  </div>
+</nav>
+
+<div id="score_container"></div>
+
+{% endblock %}

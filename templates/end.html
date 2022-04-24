@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block content %}
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename = 'end.js') }}"
+></script>
+
+<script>
+  let data = {{data | tojson}};
+  console.log(data)
+</script>
+
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="nav-container">
+    <div class="nav-title"><a href="/">LOVELY CAT</a></div>
+    <div class="nav-section">End</div>
+  </div>
+</nav>
+
+<div id="end_container"></div>
+
+{% endblock %}

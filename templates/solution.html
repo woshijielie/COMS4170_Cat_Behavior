@@ -1,0 +1,24 @@
+{% extends "layout.html" %} {% block content %}
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename = 'solution.js') }}"
+></script>
+
+<script>
+  let data = {{data | tojson}};
+  let id = {{ id }};
+  let user_answers = {{user_answers | tojson}};
+  let solutions = {{solutions | tojson}};
+</script>
+
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="nav-container">
+    <div class="nav-title"><a href="/">LOVELY CAT</a></div>
+    <div class="nav-section">Solution</div>
+  </div>
+</nav>
+
+<div id="solution_container"></div>
+
+{% endblock %}

@@ -3,7 +3,7 @@ function addButton(id){
     let prev_id = id - 1
     let but_div = $("<div class='button_container'></div>")
     let submit_button = $("<button type='button' class='btn btn-custom btn-lg next_button' " +
-        "onclick=\"location.href='" + next_id + "';\">Submit</button>")
+        "onclick=\"location.href='score';\">Submit</button>")
     let next_button = $("<button type='button' class='btn btn-custom btn-lg next_button' " +
         "onclick=\"location.href='" + next_id + "';\">Next ></button>")
     let prev_button = $("<button type='button' class='btn btn-custom btn-lg prev_button' " +
@@ -21,14 +21,18 @@ function addButton(id){
 }
 
 
-function addQuestion(data, id){
-    if(id == 7){
-        let question_div = $("<div id='quiz_7_body'>" + data + "</div>")
+function addQuestion(data, id) {
+    if (id == 6) {
+        console.log(data)
+        let question_title = data.substr(0, 8)
+        let question_body = data.substr(8)
+        let question_div = $("<div class='question_body'><span class='question_title'>" +
+            question_title + "</span>" + question_body + "</div>")
         $("#quiz_container").append(question_div)
     }
     else{
         console.log(data)
-        let question_title = data.substr(0,4)
+        let question_title = data.substr(0, 4)
         let question_body = data.substr(4)
         let question_div = $("<div class='question_body'><span class='question_title'>" +
             question_title + "</span>" + question_body + "</div>")
@@ -182,13 +186,6 @@ function display6(choices,answer){
     $("input[type='checkbox']").css("vertical-align", "middle")
 }
 
-function display7(img, score){
-    $("#quiz_7_body").prepend("<h1>Quiz Score: "+score+"</h1><br>")
-    let body_div = $("<div id='quiz_7_container'></div>")
-    let new_img= $("<img class='quiz7_img' src='" + img[0] + "'>")
-    $(body_div).append(new_img)
-    $("#quiz_container").append(body_div)
-}
 
 function update_answers_to_server(user_answers) {
     $.ajax({
@@ -282,8 +279,6 @@ $(document).ready(function(){
         })
     } else if (id == 6) {
             display6(data['choices'], user_answers[id-1])
-    } else{
-        display7(data['images'],score)
     }
     //update user answers
     update_answers(id, user_answers, data['colors']);

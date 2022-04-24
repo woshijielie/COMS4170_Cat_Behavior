@@ -108,7 +108,7 @@ learnData = {
 }
 
 
-data = {
+quiz_data = {
     "1": {"question": "Q1: Which one does the cat's ears slight bent forward? (10 pt)",
           "images": ['https://www.koty.pl/wp-content/uploads/2019/08/kocie-uszka-2-864x575.jpg',
                      'https://resc-files-prod.s3.us-west-1.amazonaws.com/s3fs-public/styles/large/public/2018-12/SLC-Feral-ear-tip-9285_1.jpg?VersionId=5Se7m9aAtpsvPIoiCAklTu1Yw.y44_Zq&itok=1Q4mwc2h',
@@ -152,11 +152,12 @@ data = {
               "A. If your cat want to knead on your lap, it is actual a good sign of contentment and happiness.",
               "B. Most time when your cat wiggles its butt, it's getting ready to escape.",
               "C. The cat will let out a series of short, high pitched meows to tell you it's glad you're back.",
-              "D. Cats are hunters. Sometimes they make chirping sounds like criskets to lure their unassuming prey."]},
-    "7": {"question": "You've already known enough about kittens, hope you will have your own cat.",
-          "images": [
-              'https://static-cdn.jtvnw.net/jtv_user_pictures/b6be9ae8-3433-4a32-bc20-a749781ca0f5-profile_banner-480-320x160.jpeg']}
+              "D. Cats are hunters. Sometimes they make chirping sounds like criskets to lure their unassuming prey."]}
 }
+
+end_data = {"question": "You've already known enough about kittens, hope you will have your own cat.",
+            "images": [
+                'https://static-cdn.jtvnw.net/jtv_user_pictures/b6be9ae8-3433-4a32-bc20-a749781ca0f5-profile_banner-480-320x160.jpeg']}
 
 # records correct solution for each quiz by stringfing index of correct objects expert q5 is char
 solutions = [('0',10),('1',10),('12',10),('0',10),('01234',50),('023',10)]
@@ -198,13 +199,13 @@ def update_learning_stage():
 @app.route('/quiz/<id>')
 def quiz(id=0):
    global user_answers
-   return render_template("quiz.html", data=data[id], id=id, user_answers=user_answers)
+   return render_template("quiz.html", data=quiz_data[id], id=id, user_answers=user_answers)
 
 # this routes renders both solution and users' answer, and users should not make selections any more
 @app.route('/solution/<id>')
 def solution(id=0):
    global user_answers, solutions
-   return render_template("solution.html", data=data[id], id=id, user_answers=user_answers, solutions=solutions)
+   return render_template("solution.html", data=quiz_data[id], id=id, user_answers=user_answers, solutions=solutions)
 
 
 # this route returns back a list of scores and the last one is total score
@@ -220,7 +221,13 @@ def score():
         score[i] = int(solutions[i][1] / len(solutions[i][0]) * len(correct_set))
     score[-1] = sum(score[:len(solutions)])
     print(score)
-    return render_template("quiz-score.html", score=score)
+    return render_template("quiz-score.html", score=score, solution=solutions)
+
+
+# this route renders the end of the quzi
+@app.route('/end')
+def end():
+    return render_template("end.html", data=end_data)
 
 # used for ajax to update user answers
 @app.route('/update_user_answers', methods=['POST'])
