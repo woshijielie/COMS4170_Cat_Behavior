@@ -131,8 +131,12 @@ data = {
                       "B. If this pose is actually followed with a hissing sound or a growl, you can touch them.",
                       "C. They are mostly communicating happiness and satisfaction."]},
     "5": {"question": "Q5: Match the meaning of different cat meows. (50 pt)",
+          "colors": ["rgb(165, 42, 42)", "rgb(0, 0, 255)", "rgb(255, 165, 0)", "rgb(0, 128, 0)", "rgb(128, 0, 128)"],
           "images": [
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2irskMPkz6T10bt_eadBkqQNduJnYHLRLFQ&usqp=CAU"],
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2irskMPkz6T10bt_eadBkqQNduJnYHLRLFQ&usqp=CAU",
+              "https://png.pngtree.com/png-vector/20201009/ourlarge/pngtree-cartoon-black-cat-vector-png-image_2359463.jpg",
+              "https://p1.hiclipart.com/preview/80/557/319/spike-s-basket-empty-pet-bed-illustration-png-clipart.jpg",
+              "https://png.pngtree.com/png-vector/20201009/ourlarge/pngtree-black-cute-cat-sleep-png-image_2360116.jpg"],
           "choices": ["A. Lure their unassuming prey.",
                       "B. Dissatisfaction or a lack of interest.",
                       "C. It is hungry and will like to be fed immediately.",
@@ -155,7 +159,7 @@ data = {
 }
 
 # records correct solution for each quiz by stringfing index of correct objects expert q5 is char
-solutions = [('0',10),('1',10),('12',10),('0',10),('ABCDE',50),('023',10)]
+solutions = [('0',10),('1',10),('12',10),('0',10),('01234',50),('023',10)]
 
 # user_answers keeps track of answers/selections user made and reflects on frontend
 # it initialize as empty string
@@ -202,20 +206,21 @@ def solution(id=0):
    global user_answers, solutions
    return render_template("solution.html", data=data[id], id=id, user_answers=user_answers, solutions=solutions)
 
+
 # this route returns back a list of scores and the last one is total score
 @app.route('/quiz/score')
 def score():
-   global user_answers, solutions
-   score=[0 for _ in range(len(solutions)+1)] # list (score for each quiz + final quiz)
-   for i in range(len(solutions)):
-      # give partial credits
-      solution_set = set(solutions[i][0])
-      answer_set = set(user_answers[i])
-      correct_set = solution_set.intersection(answer_set)
-      score[i]= int(solutions[i][1]/len(solutions[i][0])*len(correct_set))
-   score[-1]=sum(score[:len(solutions)])
-   print(score)
-   return render_template("quiz-score.html", score=score)
+    global user_answers, solutions
+    score = [0 for _ in range(len(solutions) + 1)]  # list (score for each quiz + final quiz)
+    for i in range(len(solutions)):
+        # give partial credits
+        solution_set = set(solutions[i][0])
+        answer_set = set(user_answers[i])
+        correct_set = solution_set.intersection(answer_set)
+        score[i] = int(solutions[i][1] / len(solutions[i][0]) * len(correct_set))
+    score[-1] = sum(score[:len(solutions)])
+    print(score)
+    return render_template("quiz-score.html", score=score)
 
 # used for ajax to update user answers
 @app.route('/update_user_answers', methods=['POST'])

@@ -3,19 +3,19 @@ function addButton(id) {
   let prev_id = id - 1;
   let but_div = $("<div class='button_container'></div>");
   let next_button = $(
-    "<button type='button' class='btn btn-primary btn-lg next_button' " +
+    "<button type='button' class='btn btn-custom btn-lg next_button' " +
       "onclick=\"location.href='" +
       next_id +
       "';\">Next ></button>"
   );
   let prev_button = $(
-    "<button type='button' class='btn btn-primary btn-lg prev_button' " +
+    "<button type='button' class='btn btn-custom btn-lg prev_button' " +
       "onclick=\"location.href='" +
       prev_id +
       "';\">< Previous</button>"
   );
   let quiz_button = $(
-    "<button type='button' class='btn btn-primary btn-lg next_button' onclick='clickQuiz()'>Quiz ></button>"
+    "<button type='button' class='btn btn-custom btn-lg next_button' onclick='clickQuiz()'>Quiz ></button>"
   );
   if (prev_id != 0 && prev_id != 13) {
     $(but_div).append(prev_button);
