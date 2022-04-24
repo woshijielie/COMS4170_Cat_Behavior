@@ -33,7 +33,7 @@ function display123(data, id, answer, solution) {
         let new_img= $("<img src='" + value + "' class='solution" + id +"'>")
         // check selections user has made
         if(answer.includes(index.toString())){
-            $(new_img).css('border', 'border: 7px solid cornflowerblue')
+            $(new_img).css('border', '7px solid cornflowerblue')
         }
         $("#solution_container").append(new_img)
     })
