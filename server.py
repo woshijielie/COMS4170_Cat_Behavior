@@ -16,7 +16,7 @@ learnData = {
    "2": {
       "part": "Ear",
       "behavior": "Straight and Upright",
-      "explanation": "Something has got your cat’s attention ",
+      "explanation": "Something has got your cat's attention ",
       "example": "Animal in the wild do this instinctively so they could hear more and ascertain if a coming sound means danger or not.",
       "img": "https://4170img.s3.amazonaws.com/EarStraight.jpg",
       "gif": "https://4170gif.s3.amazonaws.com/earStraight.gif",
