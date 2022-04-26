@@ -17,10 +17,11 @@ function addButton(id) {
   let quiz_button = $(
     "<button type='button' class='btn btn-custom btn-lg next_button' onclick='clickQuiz()'>Quiz ></button>"
   );
-  if (prev_id != 0 && prev_id != 13) {
+
+  if (prev_id != 0 && prev_id != 3 && prev_id != 6 && prev_id != 11 && prev_id != 13) {
     $(but_div).append(prev_button);
   }
-  if (next_id != 14) {
+  if (next_id != 4 && next_id != 7 && next_id != 12 && next_id != 13) {
     $(but_div).append(next_button);
   }
   if (next_id == 14) {
@@ -36,29 +37,66 @@ function clickQuiz() {
   }
 }
 
+function showBox() {
+  $(".confirmBox").addClass('tipShow');
+  $(".maskModal").show();
+}
+
+function sure(type, id) {
+  let next_id = id + 1;
+  $(".confirmBox").removeClass('tipShow');
+  $(".maskModal").hide();
+  if(type == 0){
+    window.location.href = "/learn/" + next_id;
+  }else {
+    window.location.href = "/";
+  }
+}
+
 function navTitle(type) {
   //   let part = $("<div class='nav-section'>" + type + "</div>");
   $("#part").append(type);
 }
 
-function display(data) {
+function display(data, id) {
+  let top = $("<div class=''><div>");
+  let btm = $("<div class='btm-div'><div>");
+
   let body_div = $("<div id='quiz_4_container'></div>");
-  let img_div = $("<div id='col-md-6'></div>");
-  let text_div = $("<div id='col-sm-6 text_block'></div>");
-  let img = $("<img class='quiz4_img' src='" + data["img"] + "'>");
-  let gif = $("<img class='quiz4_img' src='" + data["gif"] + "'>");
-  $(img_div).append(img);
-  $(img_div).append(gif);
-  let title = $("<div class='title big'>" + data["behavior"] + "</div>");
-  let explain = $("<div class='learn_text'>" + data["explanation"] + "</div>");
+  let img_div = $("<div class='left-div'></div>");
+  let text_div = $("<div class='right-div'></div>");
+  let img = $("<img class='learn_img' src='" + data["img"] + "'>");
+  let gif = $("<img class='learn_gif' src='" + data["gif"] + "'>");
+
+  $(top).append(img);
+  $(btm).append(gif);
+
+  if (id == 2) {
+    for (var i=0;i<2;i++) {
+      $(btm).append(gif);
+    }
+  }
+
+  $(img_div).append(top);
+  $(img_div).append(btm);
+  let title = $("<div class='title big text-div'>" + data["behavior"] + "</div>");
+  let explain = $("<div class='learn_text text-div'>" + data["explanation"] + "</div>");
   let example = $(
-    "<div class='learn_text'><span class='big'>Example:</span><span>" +
+    "<div class='learn_text'><span class='big text-div'>Example: </span><span>" +
       data["example"] +
       "</div>"
   );
   $(text_div).append(title);
   $(text_div).append(explain);
   $(text_div).append(example);
+
+  if (id == 3 || id == 6 || id == 11) {
+    next_id = id + 1;
+    let fin_buttton = $(
+      "<button type='button' class='btn btn-custom btn-lg finish_button' onclick='showBox()'>Session Finish</button>"
+    );
+    $(text_div).append(fin_buttton);
+  }
 
   $(body_div).append(img_div);
   $(body_div).append(text_div);
@@ -72,7 +110,12 @@ function display12(data) {
       "' allowfullscreen='true' width='525' height='404'>"
   );
 
+  let fin_buttton = $(
+    "<button type='button' class='btn btn-custom btn-lg finish_button' onclick='showBox()'>Session Finish</button>"
+  );
+
   $("#learn_container").append(video_div);
+  $("#learn_container").append(fin_buttton);
 }
 
 function display13(data) {
@@ -152,6 +195,6 @@ $(document).ready(function () {
   } else if (id == 13) {
     display13(data["videos"]);
   } else {
-    display(data);
+    display(data, id);
   }
 });
