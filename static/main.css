@@ -36,8 +36,28 @@
   text-align: center;
   margin: 20px;
 }
+.left-div {
+  width: 50%;
+  float:left;
+}
+.right-div {
+  width: 50%;
+  float:left;
+}
+.top-div {
+  height: 50%;
+  float: top;
+}
+.btm-div {
+  height: 50%;
+  float: top;
+}
+.text-div {
+  width: auto;
+  height: 100px;
+  float: top;
+}
 .home_button {
-  margin: 20px 0px 0px;
   right: 100px;
   width: 180px;
   height: 45px;
@@ -46,6 +66,42 @@
   border-style: none;
   display: inline-block;
   margin: 20px;
+}
+.finish_button {
+  position: absolute;
+  right: 40px;
+  bottom: 60px;
+  width: 180px;
+  height: 45px;
+  background-color: #b6948d;
+  font-weight: bolder;
+  border-style: none;
+}
+.win_btn {
+  display: inline-block;
+  padding: .2rem .4rem;
+  border-radius: .1rem;
+  border: 1px solid #dddddd;
+  font-size: .26rem;
+}
+.confirmBox{
+  width: 30%;
+  line-height: .5rem;
+  border: 1px solid #939393;
+  border-radius: .1rem;
+  margin-left: 13.3%;
+  display: inline-block;
+}
+.tipShow{
+  opacity: 1;
+  transition: opacity .5s;
+  border: 1px solid #dddddd;
+  animation: showPanel .5s ease;
+}
+@keyframes showPanel {
+  0% {transform: scale(0.5);opacity: 0.0;}
+  50% {transform: (1.05);opacity: 1.0;}
+  100% {transform: scale(1);opacity: 1.0;}
 }
 .button_container {
   width: 100%;
@@ -69,6 +125,18 @@
   font-weight: bolder;
   display: inline-block;
 }
+.learn_img {
+  width: 280px;
+  height: 280px;
+  margin: 10px 30px;
+  position: relative;
+}
+.learn_gif {
+  width: auto;
+  height: 280px;
+  float: right;
+  margin-right: 30px;
+}
 input[type="checkbox"] + label:hover {
   opacity: 0.6;
   cursor: pointer;
@@ -79,13 +147,11 @@ input[type="text"] {
   border-style: solid;
   margin: 10px 20px 10px;
 }
-.text_block {
-  display: inline-block;
-}
 .title {
   font-size: 60px;
   color: blue;
   text-align: center;
+  margin: 30px;
 }
 .big {
   font-weight: bolder;
