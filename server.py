@@ -8,8 +8,8 @@ learnData = {
    "1": {
       "part": "Ear",
       "behavior": "Slightly Bent Forward",
-      "explanation": "The cat is telling you what it is playful and curious ",
-      "example": "When the cat is given a new toy or seen a new thing",
+      "explanation": "The cat is telling you what it is playful and curious.",
+      "example": "When the cat is given a new toy or seen a new thing.",
       "img": "https://4170img.s3.amazonaws.com/earBent.jpg",
       "gif": "https://4170gif.s3.amazonaws.com/earBent.gif",
    },
@@ -31,7 +31,7 @@ learnData = {
    },
    "4": {
       "part": "Eye",
-      "behavior": "Stares at You and Slowly Blinks Its Eyes",
+      "behavior": "Stare at You with Blinks",
       "explanation": "It simply means the cat adores you.",
       "example": "Humans are even fond of this slow blinking of the eyes especially when flirting with someone they admire.",
       "img": "https://4170img.s3.amazonaws.com/EyeStare.jpg",
