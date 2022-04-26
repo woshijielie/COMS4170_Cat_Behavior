@@ -18,7 +18,7 @@ function addButton(id) {
     "<button type='button' class='btn btn-custom btn-lg next_button' onclick='clickQuiz()'>Quiz ></button>"
   );
 
-  if (prev_id != 0 && prev_id != 3 && prev_id != 6 && prev_id != 11 && prev_id != 13) {
+  if (prev_id != 0 && prev_id != 3 && prev_id != 6 && prev_id != 11 && prev_id != 12) {
     $(but_div).append(prev_button);
   }
   if (next_id != 4 && next_id != 7 && next_id != 12 && next_id != 13) {
@@ -42,7 +42,7 @@ function showBox() {
   $(".maskModal").show();
 }
 
-function sure(type, id) {
+function sure(type) {
   let next_id = id + 1;
   $(".confirmBox").removeClass('tipShow');
   $(".maskModal").hide();
