@@ -93,7 +93,7 @@ function display(data, id) {
   if (id == 3 || id == 6 || id == 11) {
     next_id = id + 1;
     let fin_buttton = $(
-      "<button type='button' class='btn btn-custom btn-lg finish_button' onclick='showBox()'>Session Finish</button>"
+      "<button type='button' class='btn btn-custom btn-lg next_button' onclick='showBox()'>Session Finish</button>"
     );
     $(text_div).append(fin_buttton);
   }
@@ -111,7 +111,7 @@ function display12(data) {
   );
 
   let fin_buttton = $(
-    "<button type='button' class='btn btn-custom btn-lg finish_button' onclick='showBox()'>Session Finish</button>"
+    "<button type='button' class='btn btn-custom btn-lg next_button' onclick='showBox()'>Session Finish</button>"
   );
 
   $("#learn_container").append(video_div);
