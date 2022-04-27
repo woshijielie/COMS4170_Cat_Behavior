@@ -12,7 +12,7 @@ function displayScore(score, solution){
     $(table_div).append(header_div)
     $.each(score, function(index, value){
         if(index != 6){
-            let score_div = $("<tr><td><a href='/solution/" + (index + 1) +"'>Quiz " +
+            let score_div = $("<tr><td><a href='/solution/" + (index + 1) +"'>Question " +
                 (index + 1) + "</a></td><td>" + value + " / " + solution[index][1] +
                 "</td></tr>")
             $(table_div).append(score_div)
@@ -27,6 +27,7 @@ function displayScore(score, solution){
 }
 
 $(document).ready(function(){
-    addButton()
     displayScore(score, solution)
+    addButton()
+
 })
