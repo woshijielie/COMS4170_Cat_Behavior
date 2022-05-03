@@ -21,6 +21,13 @@
 </nav>
 
 <div class="center">
+  <div id='quizModal' class="confirmBox">
+    <div class="confirmBody"><p class="confirmtxt">Take a Quiz?</p></div>
+    <div id="btn_container" class="confirmFooter">
+      <button class="confirmBtn" onclick="quiz_sure(1)">Cancel</button>
+      <button class="confirmBtn" onclick="quiz_sure(0)">Yes</button>
+    </div>
+  </div>
   <div class="title big">Do you want to know more about me?</div>
   <div id="home_cat">
     <img
@@ -65,5 +72,6 @@
     </button>
   </div>
 </div>
+<div class="maskModal" style="display: none;"></div>
 
 {% endblock %}
