@@ -17,6 +17,33 @@ a:active { text-decoration: none; }
   border-color: #a2776e;
   color: white;
 }
+.btn-custom-light {
+  background-color: #c5b19d;
+  border-color: #c5b19d;
+  color: white;
+}
+.btn-custom-light:hover {
+  color: white;
+  background-color: #a89787;
+}
+.btn-custom-light:focus,
+.btn-custom-light.active {
+  background-color: #c3976b;
+  border-color: #c3976b;
+  color: white;
+}
+#exampleModalLabel {
+  font-weight: bold;
+}
+.btn-modal {
+  font-weight: bolder;
+  text-align: center;
+  display: inline-block;
+  margin-left: 30px;
+  margin-right: 120px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
 .navbar {
   background-color: lightgray;
   height: 80px;
