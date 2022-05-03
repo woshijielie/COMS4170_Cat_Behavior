@@ -24,22 +24,48 @@ function addButton(id) {
   if (next_id != 4 && next_id != 7 && next_id != 12 && next_id != 13) {
     $(but_div).append(next_button);
   }
-  if (next_id == 14) {
+  if (id == 13) {
+    let quizElem = '<div id="quizModal" class="confirmBox">' +
+      '<div class="confirmBody"><p class="confirmtxt">Your next step:</p></div>' +
+      '<div id="btn_container" class="confirmFooter">' +
+      '<button class="confirmBtn" onclick="sure(1)">Back Home</button>' +
+      '<button class="confirmBtn" onclick="sure(0)">Next Session</button>' +
+      '</div></div>';
+    $("#learn_container").append(quizElem);
     $(but_div).append(quiz_button);
   }
   $("#learn_container").append(but_div);
 }
 
 function clickQuiz() {
-  let con = confirm("Take a quiz?");
-  if (con == true) {
+  $(".maskModal").show();
+  var modal = document.getElementById('quizModal');
+  modal.style.display = 'block';
+  $(".confirmBox").addClass('tipShow');
+}
+
+function quiz_sure(type) {
+  $(".confirmBox").removeClass('tipShow');
+  $(".maskModal").hide();
+  if(type == 0){
     window.location.href = "/quiz/1";
+  }else {
+    var modal = document.getElementById('quizModal');
+    modal.style.display = 'None';
   }
 }
 
 function showBox() {
-  $(".confirmBox").addClass('tipShow');
   $(".maskModal").show();
+  var modal = document.getElementById('myModal');
+  modal.style.display = 'block';
+  $(".confirmBox").addClass('tipShow');
+}
+
+function closeWin() {
+  var modal = document.getElementById('myModal');
+  modal.style.display = "None";
+  $(".maskModal").hide();
 }
 
 function sure(type) {
