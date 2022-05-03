@@ -19,14 +19,17 @@
   </div>
 </nav>
 
-<div id="learn_container"></div>
-
-<div class="confirmBox">
-  <div class="confirmtxt">Your next step: </div>
-  <button class="confirmBtn" onclick="sure(1)">Back to HomePage</button>
-  <button class="confirmBtn" onclick="sure(0)">Next Session</button>
+<div id="learn_container">
+  <div id='myModal' class="confirmBox">
+    <div class="confirmHeader"><span class="close" onclick="closeWin()">&times;</span></div>
+    <div class="confirmBody"><p class="confirmtxt">Your next step:</p></div>
+    <div id="btn_container" class="confirmFooter">
+      <button class="confirmBtn" onclick="sure(1)">Back Home</button>
+      <button class="confirmBtn" onclick="sure(0)">Next Session</button>
+    </div>
+  </div>
 </div>
-
 <div class="maskModal" style="display: none;"></div>
+
 
 {% endblock %}
