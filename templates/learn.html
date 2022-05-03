@@ -19,17 +19,36 @@
   </div>
 </nav>
 
-<div id="learn_container">
-  <div id='myModal' class="confirmBox">
-    <div class="confirmHeader"><span class="close" onclick="closeWin()">&times;</span></div>
-    <div class="confirmBody"><p class="confirmtxt">Your next step:</p></div>
-    <div id="btn_container" class="confirmFooter">
-      <button class="confirmBtn" onclick="sure(1)">Back Home</button>
-      <button class="confirmBtn" onclick="sure(0)">Next Session</button>
+<div id="learn_container"></div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Your next step is:</h5>
+        <span class="close" data-dismiss="modal">&times;</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="nextPage()">Next Session</button>
+        <button type="button" class="btn btn-secondary" onclick="location.href='/'">Back Home</button>
+      </div>
     </div>
   </div>
 </div>
-<div class="maskModal" style="display: none;"></div>
 
+<div class="modal fade" id="quizModal" tabindex="-1" role="dialog" aria-labelledby="quizModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="quizModalLabel">Are you ready to quiz ?</h5>
+        <span class="close" data-dismiss="modal">&times;</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="location.href='/quiz/1'">Start my quiz</button>
+        <button type="button" class="btn btn-secondary" onclick="location.href='/'">Back Home</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
