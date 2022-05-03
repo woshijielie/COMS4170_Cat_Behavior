@@ -14,69 +14,19 @@ function addButton(id) {
       prev_id +
       "';\">< Previous</button>"
   );
-  let quiz_button = $(
-    "<button type='button' class='btn btn-custom btn-lg next_button' onclick='clickQuiz()'>Quiz ></button>"
-  );
 
   if (prev_id != 0 && prev_id != 3 && prev_id != 6 && prev_id != 11 && prev_id != 12) {
     $(but_div).append(prev_button);
   }
-  if (next_id != 4 && next_id != 7 && next_id != 12 && next_id != 13) {
+  if (next_id != 4 && next_id != 7 && next_id != 12 && next_id != 13 && next_id != 14) {
     $(but_div).append(next_button);
-  }
-  if (id == 13) {
-    let quizElem = '<div id="quizModal" class="confirmBox">' +
-      '<div class="confirmBody"><p class="confirmtxt">Your next step:</p></div>' +
-      '<div id="btn_container" class="confirmFooter">' +
-      '<button class="confirmBtn" onclick="sure(1)">Back Home</button>' +
-      '<button class="confirmBtn" onclick="sure(0)">Next Session</button>' +
-      '</div></div>';
-    $("#learn_container").append(quizElem);
-    $(but_div).append(quiz_button);
   }
   $("#learn_container").append(but_div);
 }
 
-function clickQuiz() {
-  $(".maskModal").show();
-  var modal = document.getElementById('quizModal');
-  modal.style.display = 'block';
-  $(".confirmBox").addClass('tipShow');
-}
-
-function quiz_sure(type) {
-  $(".confirmBox").removeClass('tipShow');
-  $(".maskModal").hide();
-  if(type == 0){
-    window.location.href = "/quiz/1";
-  }else {
-    var modal = document.getElementById('quizModal');
-    modal.style.display = 'None';
-  }
-}
-
-function showBox() {
-  $(".maskModal").show();
-  var modal = document.getElementById('myModal');
-  modal.style.display = 'block';
-  $(".confirmBox").addClass('tipShow');
-}
-
-function closeWin() {
-  var modal = document.getElementById('myModal');
-  modal.style.display = "None";
-  $(".maskModal").hide();
-}
-
-function sure(type) {
-  let next_id = id + 1;
-  $(".confirmBox").removeClass('tipShow');
-  $(".maskModal").hide();
-  if(type == 0){
-    window.location.href = "/learn/" + next_id;
-  }else {
-    window.location.href = "/";
-  }
+function nextPage() {
+  var next_id = id + 1;
+  window.location.href = '/learn/' + next_id;
 }
 
 function navTitle(type) {
@@ -119,7 +69,7 @@ function display(data, id) {
   if (id == 3 || id == 6 || id == 11) {
     next_id = id + 1;
     let fin_buttton = $(
-      "<button type='button' class='btn btn-custom btn-lg next_button' onclick='showBox()'>Session Finish</button>"
+      "<button type='button' class='btn btn-custom btn-lg next_button' data-toggle='modal' data-target='#exampleModal'>Session Finish</button>"
     );
     $(text_div).append(fin_buttton);
   }
@@ -137,7 +87,7 @@ function display12(data) {
   );
 
   let fin_buttton = $(
-    "<button type='button' class='btn btn-custom btn-lg next_button' onclick='showBox()'>Session Finish</button>"
+    "<button type='button' class='btn btn-custom btn-lg next_button' data-toggle='modal' data-target='#exampleModal'>Session Finish</button>"
   );
 
   $("#learn_container").append(video_div);
@@ -149,19 +99,23 @@ function display13(data) {
   let button_div = $("<div class='button_container center'></div>");
 
   let ear_but = $(
-    "<button type='button' class='btn btn-primary btn-lg home_button' onclick='window.open(\"" +
+    "<button type='button' class='btn btn-custom btn-lg more_button' onclick='window.open(\"" +
       data[0] +
       "\")'>Ear</button>"
   );
   let eye_but = $(
-    "<button type='button' class='btn btn-primary btn-lg home_button' onclick='window.open(\"" +
+    "<button type='button' class='btn btn-custom btn-lg more_button' onclick='window.open(\"" +
       data[1] +
       "\")'>Eye</button>"
   );
   let tail_but = $(
-    "<button type='button' class='btn btn-primary btn-lg home_button' onclick='window.open(\"" +
+    "<button type='button' class='btn btn-custom btn-lg more_button' onclick='window.open(\"" +
       data[2] +
       "\")'>Tail</button>"
+  );
+
+  let quiz_button = $(
+    "<button type='button' class='btn btn-custom btn-lg next_button' data-toggle='modal' data-target='#quizModal'>Quiz ></button>"
   );
 
   $(button_div).append(ear_but);
@@ -170,6 +124,7 @@ function display13(data) {
 
   $("#learn_container").append(title);
   $("#learn_container").append(button_div);
+  $("#learn_container").append(quiz_button);
 }
 
 function update_learning_stage_to_server(learning_stage) {
