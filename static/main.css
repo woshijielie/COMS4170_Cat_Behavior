@@ -130,6 +130,15 @@
   position: absolute;
   bottom: 0;
 }
+.close_button_container {
+  margin-top: 40px;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+}
+.close_button{
+  font-weight: bolder;
+}
 .next_button {
   position: absolute;
   margin: 20px 0px 0px;
@@ -184,6 +193,11 @@ input[type="text"] {
 .learn_text {
   font-size: 24px;
 }
+#score10_img_div{
+  margin: auto;
+  margin-top: 60px;
+  width: 100%;
+}
 #quiz10_img_div{
   margin: auto;
   width: 90%;
@@ -210,10 +224,10 @@ input[type="text"] {
   margin: 40px 31px 40px;
 }
 .solution1{
-  height: 250px;
-  width: 320px;
+  height: 150px;
+  width: 200px;
   display: inline-block;
-  margin: 40px 30px 40px;
+  margin: 10px 10px 10px;
 }
 #quiz20_img_div{
   margin: auto;
@@ -222,6 +236,14 @@ input[type="text"] {
 #quiz21_img_div{
   margin: auto;
   width: 61%;
+}
+#score20_img_div{
+  margin: auto;
+  width: 100%;
+}
+#score21_img_div{
+  margin: auto;
+  width: 80%;
 }
 .quiz2_choice + label {
   background-size: 100%;
@@ -233,8 +255,8 @@ input[type="text"] {
   margin: 40px 60px 0px;
 }
 .solution2{
-  height: 200px;
-  width: 250px;
+  height: 120px;
+  width: 160px;
   display: inline-block;
   margin: 40px 64px 0px;
 }
@@ -256,6 +278,14 @@ input[type="text"] {
   margin: 0px 310px 10px;
   width: 100%;
 }
+#score30_img_div{
+  margin: 30px 10px 20px;
+  width: 80%;
+}
+#score31_img_div{
+  margin: 0px 175px 10px;
+  width: 80%;
+}
 .quiz3_choice + label {
   background-size: 100%;
   background-size: cover;
@@ -267,11 +297,12 @@ input[type="text"] {
   margin-right: 260px;
 }
 .solution3{
-  height: 220px;
-  width: 280px;
+  height: 120px;
+  width: 160px;
   display: inline-block;
-  margin-left: 40px;
-  margin-right: 260px;
+}
+.solution3:not(:first-child){
+  margin-left: 168px;
 }
 .quiz3_choice:checked + label {
   border: 7px solid cornflowerblue ;
@@ -292,40 +323,44 @@ input[type="radio"] {
   height: 250px;
   width: auto;
 }
+.score4_img {
+  height: 160px;
+  width: auto;
+}
 .quiz4_choice + label {
   height: 80px;
   width: 620px;
   font-size: 23px;
 }
-
-#quiz_4_container {
-  margin: 40px 40px 0px;
+.score4_choice + label {
+  height: 50px;
+  width: 620px;
+  font-size: 20px;
+  text-align: left;
 }
-#solution_4_container {
+#quiz_4_container {
   margin: 40px 40px 0px;
 }
 #quiz_4_img_container {
   display: inline-block;
   vertical-align: top;
 }
-#solution_4_img_container {
+#score_4_img_container {
   display: inline-block;
   vertical-align: top;
+  margin: 40px 40px 0px;
 }
 #quiz_4_choices_container {
   display: inline-block;
   vertical-align: top;
   margin-left: 80px;
 }
-#solution_4_choices_container {
+#score_4_choices_container {
   display: inline-block;
   vertical-align: top;
-  margin-left: 80px;
+  margin: 40px 40px 0px;
 }
 #quiz_5_container {
-  margin: 40px 80px 0px;
-}
-#solution_5_container {
   margin: 40px 80px 0px;
 }
 #quiz_5_player_container {
@@ -334,10 +369,11 @@ input[type="radio"] {
   font-size: 25px;
   margin-left: 30px;
 }
-#solution_5_player_container {
+#score_5_player_container {
+  margin-top: 20px;
   display: inline-block;
   vertical-align: top;
-  font-size: 25px;
+  font-size: 20px;
 }
 #quiz_5_choices_container {
   display: inline-block;
@@ -346,12 +382,14 @@ input[type="radio"] {
   margin-left: 40px;
   font-size: 25px;
 }
-#solution_5_choices_container {
+#score_5_choices_container {
   display: inline-block;
+  text-align: left;
   vertical-align: top;
   padding-top: 0px;
+  margin-top: 23px;
   margin-left: 40px;
-  font-size: 25px;
+  font-size: 20px;
 }
 #quiz_5_left_container{
   margin-left: 30px;
@@ -359,7 +397,8 @@ input[type="radio"] {
   vertical-align: top;
   padding-top: 3px;
 }
-#solution_5_left_container{
+#score_5_left_container{
+  margin-top: 20px;
   margin-left: 30px;
   display: inline-block;
   vertical-align: top;
@@ -371,19 +410,13 @@ input[type="radio"] {
   vertical-align: top;
   padding-top: 3px;
 }
-#solution_5_right_container{
-  margin-left: 50px;
-  display: inline-block;
-  vertical-align: top;
-  padding-top: 3px;
-}
 .quiz5_drop_hover {
   opacity: 0.6;
 }
 .quiz5_move{
   vertical-align: top;
   width: 70px;
-  height: 70px;
+  height: 67px;
 }
 .quiz5_arrow{
   width: 100px;
@@ -413,9 +446,17 @@ input[type="radio"] {
 .quiz5_choice {
   height: 34px;
 }
+.score5_choice {
+  height: 39px;
+}
 #quiz_6_choices_container {
-  margin: 40px 120px 0px;
+  margin: 40px 120px 10px;
   font-size: 23px;
+}
+#score_6_choices_container {
+  margin: 40px 20px 0px;
+  font-size: 20px;
+  text-align: left;
 }
 .quiz6_choice{
   position: absolute;
@@ -470,4 +511,34 @@ table {
   margin-left: 40px;
   border-collapse: separate;
   border-spacing: 300px 0;
+}
+
+.score_modal_container{
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.3);
+  align-content: center;
+  justify-content: center;
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
+.score_modal_show{
+  opacity: 1;
+  pointer-events: auto;
+}
+.score_modal{
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  margin: auto;
+  max-width: 100%;
+  text-align: center;
+}
+td .score_but:hover{
+  text-decoration: underline;
+  cursor: pointer;
 }
