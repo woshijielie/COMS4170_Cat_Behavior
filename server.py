@@ -141,7 +141,7 @@ quiz_data = {
           "choices": ["A. Lure their unassuming prey.",
                       "B. Dissatisfaction or a lack of interest.",
                       "C. It is hungry and will like to be fed immediately.",
-                      "D. To get your attention and sometimes with cute eyes",
+                      "D. To get your attention and sometimes with cute eyes.",
                       "E. A call for mating."],
           "audios": {"Low or drawn out": "https://4170audio.s3.amazonaws.com/low.wav",
                      "Soft pleading": "https://4170audio.s3.amazonaws.com/soft.wav",
@@ -202,17 +202,11 @@ def quiz(id=0):
    global user_answers
    return render_template("quiz.html", data=quiz_data[id], id=id, user_answers=user_answers)
 
-# this routes renders both solution and users' answer, and users should not make selections any more
-@app.route('/solution/<id>')
-def solution(id=0):
-   global user_answers, solutions
-   return render_template("solution.html", data=quiz_data[id], id=id, user_answers=user_answers, solutions=solutions)
-
 
 # this route returns back a list of scores and the last one is total score
 @app.route('/quiz/score')
 def score():
-    global user_answers, solutions
+    global user_answers, solutions, quiz_data
     score = [0 for _ in range(len(solutions) + 1)]  # list (score for each quiz + final quiz)
     for i in range(len(solutions)):
         # give partial credits
@@ -222,7 +216,7 @@ def score():
         score[i] = int(solutions[i][1] / len(solutions[i][0]) * len(correct_set))
     score[-1] = sum(score[:len(solutions)])
     print(score)
-    return render_template("quiz-score.html", score=score, solution=solutions)
+    return render_template("quiz-score.html", score=score, solution=solutions, data=quiz_data)
 
 
 # this route renders the end of the quzi
