@@ -21,15 +21,15 @@ function addButton(id) {
   if (prev_id != 0 && prev_id != 3 && prev_id != 6 && prev_id != 11 && prev_id != 12) {
     $(but_div).append(prev_button);
   }
-  if (next_id != 4 && next_id != 7 && next_id != 12 && next_id != 13) {
+  if (next_id != 4 && next_id != 7 && next_id != 12 && next_id != 13 && next_id != 14) {
     $(but_div).append(next_button);
   }
   if (id == 13) {
     let quizElem = '<div id="quizModal" class="confirmBox">' +
-      '<div class="confirmBody"><p class="confirmtxt">Your next step:</p></div>' +
+      '<div class="confirmBody"><p class="confirmtxt">Take a Quiz?</p></div>' +
       '<div id="btn_container" class="confirmFooter">' +
-      '<button class="confirmBtn" onclick="sure(1)">Back Home</button>' +
-      '<button class="confirmBtn" onclick="sure(0)">Next Session</button>' +
+      '<button class="confirmBtn" onclick="quiz_sure(1)">Cancel</button>' +
+      '<button class="confirmBtn" onclick="quiz_sure(0)">Yes</button>' +
       '</div></div>';
     $("#learn_container").append(quizElem);
     $(but_div).append(quiz_button);
