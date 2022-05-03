@@ -25,6 +25,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Are you ready to quiz ?</h5>
+        <span class="close" data-dismiss="modal">&times;</span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" onclick="location.href='/quiz/1'">Start my quiz</button>
@@ -36,13 +37,6 @@
 
 
 <div class="center">
-  <div id='quizModal' class="confirmBox">
-    <div class="confirmBody"><p class="confirmtxt">Take a Quiz?</p></div>
-    <div id="btn_container" class="confirmFooter">
-      <button class="confirmBtn" onclick="quiz_sure(1)">Cancel</button>
-      <button class="confirmBtn" onclick="quiz_sure(0)">Yes</button>
-    </div>
-  </div>
   <div class="title big" id="query">Do you want to know more about my <span id="part">_____</span> ? </div>
   <div id="home_cat">
     <img
@@ -85,6 +79,5 @@
 
 
 </div>
-<div class="maskModal" style="display: none;"></div>
 
 {% endblock %}
