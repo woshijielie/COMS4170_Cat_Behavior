@@ -1,6 +1,5 @@
 a:link { text-decoration: none; }
-a:visited { text-decoration: none; }
-a:hover { text-decoration: none; }
+a:hover { color: black; text-decoration: none; }
 a:active { text-decoration: none; }
 
 .btn-custom {
@@ -32,10 +31,10 @@ a:active { text-decoration: none; }
 a{
   color: black;
 }
-a:hover {
+/* a:hover {
   color: blue;
   text-decoration: underline;
-}
+} */
 .nav-section {
   position: absolute;
   top: 30%;
