@@ -4,18 +4,18 @@ $(document).ready(function () {
   // hover effect
   $('.mapping').mouseover(function() {
     var part = $(this).attr('class').split(" ")[0];
-    $('#part').text(part);
+    $('#user_part').text(part);
     if(learning_stage[part]["start"][1]==null || learning_stage[part]["finish"][1]==null) {
       var data = $('.'+part).data('maphilight');
       data.fillColor="78919c";
       data.fillOpacity=0.7;
       $('.'+part).data('maphilight', data).trigger('alwaysOn.maphilight');
     } else {
-      $('#query').html("You have known my "+part+". Good work!");
+      $('#query').html("You have known my <span id='user_part'>"+part+"</span>. Good work!");
     }
   }).mouseout(function(){
     var part = $(this).attr('class').split(" ")[0];
-    $('#query').html("Do you want to know more about my <span id='part'>_____</span> ?");
+    $('#query').html("Do you want to know more about my <span id='user_part'>_____</span> ?");
     if(learning_stage[part]["start"][1]==null || learning_stage[part]["finish"][1]==null) {
       var data = $('.'+part).data('maphilight');
       data.fillColor="A9A9A9";

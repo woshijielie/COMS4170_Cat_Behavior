@@ -1,3 +1,8 @@
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+
 .btn-custom {
   background-color: #b6948d;
   border-color: #b6948d;
@@ -57,6 +62,9 @@
   width: auto;
   height: 100px;
   float: top;
+}
+#user_part {
+  color: #b6948d;
 }
 .home_button {
   right: 100px;
