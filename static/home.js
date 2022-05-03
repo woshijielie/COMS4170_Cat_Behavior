@@ -1,7 +1,18 @@
 function clickQuiz() {
-  let con = confirm("Take a quiz?");
-  if (con == true) {
+  $(".maskModal").show();
+  var modal = document.getElementById('quizModal');
+  modal.style.display = 'block';
+  $(".confirmBox").addClass('tipShow');
+}
+
+function quiz_sure(type) {
+  $(".confirmBox").removeClass('tipShow');
+  $(".maskModal").hide();
+  if(type == 0){
     window.location.href = "/quiz/1";
+  }else {
+    var modal = document.getElementById('quizModal');
+    modal.style.display = 'None';
   }
 }
 
