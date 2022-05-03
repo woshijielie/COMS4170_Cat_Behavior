@@ -22,8 +22,15 @@
   display: inline-block;
   font-size: 30px;
   font-weight: normal;
+  color: black;
 }
-
+a{
+  color: black;
+}
+a:hover {
+  color: blue;
+  text-decoration: underline;
+}
 .nav-section {
   position: absolute;
   top: 20px;
@@ -79,9 +86,16 @@
   border-style: none;
 }
 .confirmtxt {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   font-family:"Times New Roman", Times, serif;
   font-weight: bolder;
-  font-size: 40px;
+  font-size: 30px;
 }
 .confirmBtn {
   width: 30%;
@@ -92,16 +106,28 @@
   margin: 8px 5px;
 }
 .confirmBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40%;
-  margin: 0 auto;
-  border-radius: 10px;
-  opacity: 0;
   position: relative;
+  display: None;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 30%;
   z-index: 101;
-  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.confirmBody {
+  padding: 2px 16px;
+}
+.confirmHeader {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+.confirmFooter {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
 }
 .maskModal {
   overflow: auto;
@@ -123,6 +149,18 @@
   0% {transform: scale(0.5);opacity: 0.0;}
   50% {transform: scale(1.05);opacity: 1.0;}
   100% {transform: scale(1);opacity: 1.0;}
+}
+.close {
+  color: grey;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 .button_container {
   width: 100%;
@@ -183,7 +221,7 @@ input[type="text"] {
 }
 .title {
   font-size: 60px;
-  color: blue;
+  color: black;
   text-align: center;
   margin: 30px;
 }
