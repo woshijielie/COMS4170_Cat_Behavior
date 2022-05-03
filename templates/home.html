@@ -20,6 +20,21 @@
   </div>
 </nav>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you ready to quiz ?</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="location.href='/quiz/1'">Start my quiz</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Not yet</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="center">
   <div id='quizModal' class="confirmBox">
     <div class="confirmBody"><p class="confirmtxt">Take a Quiz?</p></div>
@@ -28,7 +43,7 @@
       <button class="confirmBtn" onclick="quiz_sure(0)">Yes</button>
     </div>
   </div>
-  <div class="title big">Do you want to know more about me?</div>
+  <div class="title big" id="query">Do you want to know more about my <span id="part">_____</span> ? </div>
   <div id="home_cat">
     <img
       id="cat"
@@ -39,12 +54,12 @@
       usemap="#catMap"
     />
     <map name="catMap">
-      <area shape="rect" class="ear" coords="63,58,113,118" alt="ear" data-maphilight='{"alwaysOn":true,"stroke":false}'  href="/learn/1" />
-      <area shape="circle" class="ear" coords="222,110,31" alt="ear" data-maphilight='{"alwaysOn":true,"stroke":false}' href="/learn/1" />
-      <area shape="circle" class="eye" coords="114,174,17" alt="eye" data-maphilight='{"alwaysOn":true,"stroke":false}' href="/learn/4" />
-      <area shape="circle" class="eye" coords="181,182,17" alt="eye" data-maphilight='{"alwaysOn":true,"stroke":false}' href="/learn/4" />
-      <area shape="rect" class="body" coords="57,254,294,370" alt="body" data-maphilight='{"alwaysOn":true,"stroke":false}' href="/learn/12" />
-      <area shape="rect" class="tail" coords="364,12,254,169" alt="tail" data-maphilight='{"alwaysOn":true,"stroke":false}' href="/learn/7" />
+      <area shape="poly" class="ear mapping" coords="239,81,223,87,206,96,193,113,211,124,228,131,233,137,240,108,243,84" alt="ear" data-maphilight='{"alwaysOn":true, "fillColor":"A9A9A9","fillOpacity": 0.3,"strokeColor": "DCDCDC","strokeWidth": 6,"strokeOpacity": 0.7}'  href="/learn/1" />
+      <area shape="poly" class="ear mapping" coords="71,55,61,81,61,106,63,126,86,127,113,118,125,99,106,75,88,63" alt="ear" data-maphilight='{"alwaysOn":true, "fillColor":"A9A9A9","fillOpacity": 0.3,"strokeColor": "DCDCDC","strokeWidth": 6,"strokeOpacity": 0.7}' href="/learn/1" />
+      <area shape="circle" class="eye mapping" coords="114,173,21" alt="eye" data-maphilight='{"alwaysOn":true, "fillColor":"A9A9A9","fillOpacity": 0.3,"strokeColor": "DCDCDC","strokeWidth": 6,"strokeOpacity": 0.7}' href="/learn/4" />
+      <area shape="circle" class="eye mapping" coords="179,181,19" alt="eye" data-maphilight='{"alwaysOn":true, "fillColor":"A9A9A9","fillOpacity": 0.3,"strokeColor": "DCDCDC","strokeWidth": 6,"strokeOpacity": 0.7}' href="/learn/4" />
+      <area shape="poly" class="body mapping" coords="77,240,108,253,140,262,171,259,188,252,201,250,208,271,199,292,183,314,171,339,160,364,138,368,116,341,100,318,87,298,79,275" alt="body" data-maphilight='{"alwaysOn":true, "fillColor":"A9A9A9","fillOpacity": 0.3,"strokeColor": "DCDCDC","strokeWidth": 6, "strokeOpacity": 0.7}' href="/learn/12" />
+      <area shape="poly" class="tail mapping" coords="340,9,330,16,315,36,297,56,280,78,259,95,246,124,259,142,280,158,288,169,320,135,340,108,350,87,361,52,362,21,352,5" alt="tail" data-maphilight='{"alwaysOn":true, "fillColor":"A9A9A9","fillOpacity": 0.3,"strokeColor": "DCDCDC","strokeWidth": 8, "strokeOpacity": 0.7}' href="/learn/7" />
     </map>
   </div>
   
@@ -63,14 +78,12 @@
     >
       More
     </button>
-    <button
-      type="button"
-      class="btn btn-custom btn-lg home_button"
-      onclick="clickQuiz()"
-    >
+    <button type="button" class="btn btn-custom btn-lg home_button" data-toggle="modal" data-target="#exampleModal">
       Quiz
     </button>
   </div>
+
+
 </div>
 <div class="maskModal" style="display: none;"></div>
 
