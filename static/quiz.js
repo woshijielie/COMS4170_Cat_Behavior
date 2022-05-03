@@ -1,9 +1,14 @@
+sleep_list = {}
+
 function addButton(id){
     let next_id = id + 1
     let prev_id = id - 1
     let but_div = $("<div class='button_container'></div>")
+    if(id == 2 || id == 3){
+        $(but_div).css("position", "relative")
+    }
     let submit_button = $("<button type='button' class='btn btn-custom btn-lg next_button' " +
-        "onclick=\"location.href='" + next_id + "';\">Submit</button>")
+        "onclick=\"location.href='score';\">Submit</button>")
     let next_button = $("<button type='button' class='btn btn-custom btn-lg next_button' " +
         "onclick=\"location.href='" + next_id + "';\">Next ></button>")
     let prev_button = $("<button type='button' class='btn btn-custom btn-lg prev_button' " +
@@ -21,14 +26,18 @@ function addButton(id){
 }
 
 
-function addQuestion(data, id){
-    if(id == 7){
-        let question_div = $("<div id='quiz_7_body'>" + data + "</div>")
+function addQuestion(data, id) {
+    if (id == 6) {
+        console.log(data)
+        let question_title = data.substr(0, 8)
+        let question_body = data.substr(8)
+        let question_div = $("<div class='question_body'><span class='question_title'>" +
+            question_title + "</span>" + question_body + "</div>")
         $("#quiz_container").append(question_div)
     }
     else{
         console.log(data)
-        let question_title = data.substr(0,4)
+        let question_title = data.substr(0, 4)
         let question_body = data.substr(4)
         let question_div = $("<div class='question_body'><span class='question_title'>" +
             question_title + "</span>" + question_body + "</div>")
@@ -39,20 +48,31 @@ function addQuestion(data, id){
 
 function display123(data, id, answer) {
     let body_div = $("<div id='quiz_" + id + "_choices_container'></div>")
-    
-    $.each(data, function(index, value){
-        let name = "Q" + id + index
-        let new_img= $("<input type='checkbox' name='" + name + "' class='quiz" + id +"_choice'" +
+    let level = 1
+    let mid = 3
+    if(data.length > 3){
+        level = 2
+        mid = Math.ceil(data.length / 2)
+    }
+
+    for (var i = 0; i < level; i++) {
+        let img_div = $("<div id='quiz" + id + i + "_img_div'></div>")
+        for (var j = 0 + i * mid; j < mid + i * mid && j < data.length; j++) {
+            let name = "Q" + id + j
+            let new_img = $("<input type='checkbox' name='" + name + "' class='quiz" + id + "_choice'" +
                 "id='" + name + "'/><label for='" + name + "'></label>")
-        // check selections user has made
-        if(answer.includes(index.toString())){
-            new_img.prop('checked', true)
-            console.log('Selected:'+index.toString())
+            // check selections user has made
+            if (answer.includes(j.toString())) {
+                new_img.prop('checked', true)
+                console.log('Selected:' + j.toString())
+            }
+            $(new_img).css("background-image", "url('" + data[j] + "')")
+            $(img_div).append(new_img)
         }
-        $(new_img).css("background-image", "url('" + value + "')")
-        $(body_div).append(new_img)
-        $("#quiz_container").append(body_div)
-    })
+        $(body_div).append(img_div)
+    }
+    $("#quiz_container").append(body_div)
+
     $("input[type='checkbox']").css("display", "none")
 }
 
@@ -80,7 +100,7 @@ function display4(img, choices, answer){
     $("#quiz_container").append(body_div)
 }
 
-function display5(color, img, choices, audios, sleep_list){
+function display5(color, img, choices, audios){
     let body_div = $("<div id='quiz_5_container'></div>")
     let player_div = $("<div id='quiz_5_player_container'></div>")
     // div for draggable
@@ -145,17 +165,17 @@ function display5(color, img, choices, audios, sleep_list){
                 left: "0px"
             });
             sleep_list[drag_id] = drop_id
-            addColor(sleep_list, color, img)
+            addColor(color, img)
         }
     })
     // show user answers stored
     if (sleep_list) {
-        addColor(sleep_list, color, img)
+        addColor(color, img)
     }
 
 }
 
-function addColor(sleep_list, color, img){
+function addColor(color, img){
     $.each(sleep_list, function (key, value) {
         if (value != " ") {
             $("#quiz5_drag" + key).hide()
@@ -182,13 +202,6 @@ function display6(choices,answer){
     $("input[type='checkbox']").css("vertical-align", "middle")
 }
 
-function display7(img, score){
-    $("#quiz_7_body").prepend("<h1>Quiz Score: "+score+"</h1><br>")
-    let body_div = $("<div id='quiz_7_container'></div>")
-    let new_img= $("<img class='quiz7_img' src='" + img[0] + "'>")
-    $(body_div).append(new_img)
-    $("#quiz_container").append(body_div)
-}
 
 function update_answers_to_server(user_answers) {
     $.ajax({
@@ -219,9 +232,11 @@ function update_answers(qid, user_answers, colors) {
         $(document).on('click', '#quiz_5_container', function (event) {
             console.log('... changing answers on quiz'+qid);
             user_answers[id] = '';
+            sleep_list = {}
             for (var i = 0; i < 5; i++) {
                 let color = $("#Q5C" + i).css("color")
                 if(colors.includes(color)){
+                    sleep_list[colors.indexOf(color)] = i.toString()
                     user_answers[id]=user_answers[id].concat(colors.indexOf(color));
                 }
                 else{
@@ -253,20 +268,22 @@ function update_answers(qid, user_answers, colors) {
 
 $(document).ready(function(){
     console.log(typeof(id))
-    addButton(id)
     addQuestion(data['question'], id)
     if (id == 1 || id == 2 || id == 3) {
         display123(data['images'], id, user_answers[id-1])
+        addButton(id)
     } else if (id == 4) {
         display4(data['images'], data['choices'], user_answers[id-1])
+        addButton(id)
     } else if (id == 5) {
-        let sleep_list = {}
-        if(user_answers[id-1]){
+        if(user_answers[id-1] && $.trim(user_answers[id-1])){
+            console.log("in")
             for (var i = 0; i < user_answers[id-1].length; i++) {
                 sleep_list[i] = user_answers[id-1][i]
             }
         }
-        display5(data['colors'], data['images'], data['choices'], data['audios'], sleep_list)
+        display5(data['colors'], data['images'], data['choices'], data['audios'])
+        addButton(id)
         // revert draggable
         $(document).on('click', '.quiz5_drop', function (event) {
             let id = $(this).attr("id").substr($(this).attr("id").length - 1)
@@ -281,9 +298,8 @@ $(document).ready(function(){
             $("#Q5A" + id)[0].play()
         })
     } else if (id == 6) {
-            display6(data['choices'], user_answers[id-1])
-    } else{
-        display7(data['images'],score)
+        display6(data['choices'], user_answers[id-1])
+        addButton(id)
     }
     //update user answers
     update_answers(id, user_answers, data['colors']);

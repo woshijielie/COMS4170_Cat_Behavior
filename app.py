@@ -8,15 +8,15 @@ learnData = {
    "1": {
       "part": "Ear",
       "behavior": "Slightly Bent Forward",
-      "explanation": "The cat is telling you what it is playful and curious ",
-      "example": "When the cat is given a new toy or seen a new thing",
+      "explanation": "The cat is telling you what it is playful and curious.",
+      "example": "When the cat is given a new toy or seen a new thing.",
       "img": "https://4170img.s3.amazonaws.com/earBent.jpg",
       "gif": "https://4170gif.s3.amazonaws.com/earBent.gif",
    },
    "2": {
       "part": "Ear",
       "behavior": "Straight and Upright",
-      "explanation": "Something has got your cat’s attention ",
+      "explanation": "Something has got your cat's attention ",
       "example": "Animal in the wild do this instinctively so they could hear more and ascertain if a coming sound means danger or not.",
       "img": "https://4170img.s3.amazonaws.com/EarStraight.jpg",
       "gif": "https://4170gif.s3.amazonaws.com/earStraight.gif",
@@ -31,7 +31,7 @@ learnData = {
    },
    "4": {
       "part": "Eye",
-      "behavior": "Stares at You and Slowly Blinks Its Eyes",
+      "behavior": "Stare at You with Blinks",
       "explanation": "It simply means the cat adores you.",
       "example": "Humans are even fond of this slow blinking of the eyes especially when flirting with someone they admire.",
       "img": "https://4170img.s3.amazonaws.com/EyeStare.jpg",
@@ -108,7 +108,7 @@ learnData = {
 }
 
 
-data = {
+quiz_data = {
     "1": {"question": "Q1: Which one does the cat's ears slight bent forward? (10 pt)",
           "images": ['https://www.koty.pl/wp-content/uploads/2019/08/kocie-uszka-2-864x575.jpg',
                      'https://resc-files-prod.s3.us-west-1.amazonaws.com/s3fs-public/styles/large/public/2018-12/SLC-Feral-ear-tip-9285_1.jpg?VersionId=5Se7m9aAtpsvPIoiCAklTu1Yw.y44_Zq&itok=1Q4mwc2h',
@@ -136,11 +136,12 @@ data = {
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2irskMPkz6T10bt_eadBkqQNduJnYHLRLFQ&usqp=CAU",
               "https://png.pngtree.com/png-vector/20201009/ourlarge/pngtree-cartoon-black-cat-vector-png-image_2359463.jpg",
               "https://p1.hiclipart.com/preview/80/557/319/spike-s-basket-empty-pet-bed-illustration-png-clipart.jpg",
-              "https://png.pngtree.com/png-vector/20201009/ourlarge/pngtree-black-cute-cat-sleep-png-image_2360116.jpg"],
+              "https://png.pngtree.com/png-vector/20201009/ourlarge/pngtree-black-cute-cat-sleep-png-image_2360116.jpg",
+              "https://www.jing.fm/clipimg/full/406-4066745_transparent-trendy-arrow-clipart-trendy-arrow-png-green.png"],
           "choices": ["A. Lure their unassuming prey.",
                       "B. Dissatisfaction or a lack of interest.",
                       "C. It is hungry and will like to be fed immediately.",
-                      "D. To get your attention and sometimes with cute eyes",
+                      "D. To get your attention and sometimes with cute eyes.",
                       "E. A call for mating."],
           "audios": {"Low or drawn out": "https://4170audio.s3.amazonaws.com/low.wav",
                      "Soft pleading": "https://4170audio.s3.amazonaws.com/soft.wav",
@@ -152,11 +153,12 @@ data = {
               "A. If your cat want to knead on your lap, it is actual a good sign of contentment and happiness.",
               "B. Most time when your cat wiggles its butt, it's getting ready to escape.",
               "C. The cat will let out a series of short, high pitched meows to tell you it's glad you're back.",
-              "D. Cats are hunters. Sometimes they make chirping sounds like criskets to lure their unassuming prey."]},
-    "7": {"question": "You've already known enough about kittens, hope you will have your own cat.",
-          "images": [
-              'https://static-cdn.jtvnw.net/jtv_user_pictures/b6be9ae8-3433-4a32-bc20-a749781ca0f5-profile_banner-480-320x160.jpeg']}
+              "D. Cats are hunters. Sometimes they make chirping sounds like criskets to lure their unassuming prey."]}
 }
+
+end_data = {"question": "You've already known enough about kittens, hope you will have your own cat.",
+            "images": [
+                'https://static-cdn.jtvnw.net/jtv_user_pictures/b6be9ae8-3433-4a32-bc20-a749781ca0f5-profile_banner-480-320x160.jpeg']}
 
 # records correct solution for each quiz by stringfing index of correct objects expert q5 is char
 solutions = [('0',10),('1',10),('12',10),('0',10),('01234',50),('023',10)]
@@ -198,19 +200,13 @@ def update_learning_stage():
 @app.route('/quiz/<id>')
 def quiz(id=0):
    global user_answers
-   return render_template("quiz.html", data=data[id], id=id, user_answers=user_answers)
-
-# this routes renders both solution and users' answer, and users should not make selections any more
-@app.route('/solution/<id>')
-def solution(id=0):
-   global user_answers, solutions
-   return render_template("solution.html", data=data[id], id=id, user_answers=user_answers, solutions=solutions)
+   return render_template("quiz.html", data=quiz_data[id], id=id, user_answers=user_answers)
 
 
 # this route returns back a list of scores and the last one is total score
 @app.route('/quiz/score')
 def score():
-    global user_answers, solutions
+    global user_answers, solutions, quiz_data
     score = [0 for _ in range(len(solutions) + 1)]  # list (score for each quiz + final quiz)
     for i in range(len(solutions)):
         # give partial credits
@@ -220,7 +216,13 @@ def score():
         score[i] = int(solutions[i][1] / len(solutions[i][0]) * len(correct_set))
     score[-1] = sum(score[:len(solutions)])
     print(score)
-    return render_template("quiz-score.html", score=score)
+    return render_template("quiz-score.html", score=score, solution=solutions, data=quiz_data)
+
+
+# this route renders the end of the quzi
+@app.route('/end')
+def end():
+    return render_template("end.html", data=end_data)
 
 # used for ajax to update user answers
 @app.route('/update_user_answers', methods=['POST'])
