@@ -1,15 +1,8 @@
-function clickQuiz() {
-  let con = confirm("Take a quiz?");
-  if (con == true) {
-    window.location.href = "/quiz/1";
-  }
-}
-
 $(document).ready(function () {
   $('#cat').maphilight();
 
+  // hover effect
   $('.mapping').mouseover(function() {
-    //alert($(this).attr('class'));
     var part = $(this).attr('class').split(" ")[0];
     $('#part').text(part);
     if(learning_stage[part]["start"][1]==null || learning_stage[part]["finish"][1]==null) {
@@ -42,10 +35,5 @@ $(document).ready(function () {
       // data.strokeOpacity=0.6;
       $('.'+part).data('maphilight', data).trigger('alwaysOn.maphilight');
     }
-      // $('.'+part).attr('data-maphilight', '{"fillColor":"63e663","alwaysOn":true,"stroke":false}');
-    // } else {
-    //   console.log("not yet finish learning part "+part);
-    //   $('.'+part).attr('data-maphilight', '{"alwaysOn":true,"stroke":false}');
-    // }
   }
 });

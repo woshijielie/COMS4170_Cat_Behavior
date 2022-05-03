@@ -20,6 +20,21 @@
   </div>
 </nav>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you ready to quiz ?</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="location.href='/quiz/1'">Start my quiz</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Not yet</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="center">
   <div class="title big" id="query">Do you want to know more about my <span id="part">_____</span> ? </div>
   <div id="home_cat">
@@ -56,14 +71,12 @@
     >
       More
     </button>
-    <button
-      type="button"
-      class="btn btn-custom btn-lg home_button"
-      onclick="clickQuiz()"
-    >
+    <button type="button" class="btn btn-custom btn-lg home_button" data-toggle="modal" data-target="#exampleModal">
       Quiz
     </button>
   </div>
+
+
 </div>
 
 {% endblock %}
