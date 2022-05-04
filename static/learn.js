@@ -150,7 +150,7 @@ function update_learning_stage_to_server(learning_stage) {
 $(document).ready(function () {
   console.log(typeof id);
   addButton(id);
-  navTitle(data["part"]);
+  navTitle(data["part"].toUpperCase());
 
   if (id!=13) {
     // record timestamp if it's start/end page for each section (ear, eye, tail)
