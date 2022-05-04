@@ -18,8 +18,8 @@ function displayScore(score, solution){
             $(table_div).append(score_div)
         }
         else{
-            let score_div = $("<tr><td>Total Score</td><td>" + value + " / 100" +
-                "</td></tr>")
+            let score_div = $("<tr><td><span class='total_score'>Total Score</span></td><td><span class='total_score'>" + value + " / 100" +
+                "</span></td></tr>")
             $(table_div).append(score_div)
         }
     })
@@ -33,6 +33,8 @@ function displayScore(score, solution){
 
 function displayModal(quiz_data, solution, id) {
     $(".score_modal").empty()
+    let question_div = $("<div class='score_question'>" + quiz_data["question"] + "</div>")
+    $(".score_modal").append(question_div)
     if(id == '1' || id == '2' || id == '3'){
         let data = quiz_data['images']
         let level = 1
@@ -91,11 +93,11 @@ function displayModal(quiz_data, solution, id) {
         let i = 0
         $.each(audios, function (key, value) {
             let player_name = "S5P" + i
-            let new_player = $("<div class='quiz5_player_text'><span class='" + player_name + "'>" + key + "</span>" +
+            let new_player = $("<div class='score5_player_text'><span class='" + player_name + "'>" + key + "</span>" +
                 "<br></div>")
             $(player_div).append(new_player)
 
-            let new_draggable = $("<div class='quiz5_move'>" +
+            let new_draggable = $("<div class='score5_move'>" +
                 "<img src='" + img[4] + "' class='quiz5_arrow' id='solution5_drag" + i + "'><br></div>")
             $(left_div).append(new_draggable)
             i += 1
@@ -109,7 +111,7 @@ function displayModal(quiz_data, solution, id) {
 
         $(player_div).css("margin-left", "50px")
         $(choice_div).css("margin-left", "70px")
-        $(choice_div).css("margin-right", "10px")
+        $(choice_div).css("margin-right", "30px")
 
         $(".score_modal").append(player_div)
         $(".score_modal").append(left_div)
@@ -144,22 +146,24 @@ function displayModal(quiz_data, solution, id) {
     $(".score_modal").append(but_div)
 
     if(id == '1'){
-        $(".score_modal").css("height", "370px")
+        $(".score_modal").css("height", "360px")
     }
     else if(id == '2'){
         $(".score_modal").css("height", "450px")
     }
     else if(id == '3'){
-        $(".score_modal").css("height", "400px")
+        $(".score_modal").css("height", "450px")
     }
     else if(id == '4'){
-        $(".score_modal").css("height", "360px")
+        $(".score_modal").css("height", "350px")
     }
     else if(id == '5'){
-        $(".score_modal").css("height", "470px")
+        $(".score_modal").css("height", "410px")
+        $(".close_button_container").css("margin-top", "15px")
     }
     else if(id == '6'){
-        $(".score_modal").css("height", "360px")
+        $(".score_modal").css("height", "350px")
+        $(".close_button_container").css("margin-top", "30px")
     }
     $(".score_modal_container").addClass("score_modal_show")
 }

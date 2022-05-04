@@ -184,9 +184,13 @@ input[type="text"] {
 .learn_text {
   font-size: 24px;
 }
+#quiz_container{
+  margin: auto;
+  text-align: center;
+}
 #score10_img_div{
   margin: auto;
-  margin-top: 60px;
+  margin-top: 30px;
   width: 100%;
 }
 #quiz10_img_div{
@@ -198,8 +202,8 @@ input[type="text"] {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 250px;
-  width: 320px;
+  height: 230px;
+  width: 300px;
   display: inline-block;
   margin: 40px 31px 40px;
 }
@@ -209,8 +213,8 @@ input[type="text"] {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  height: 250px;
-  width: 320px;
+  height: 230px;
+  width: 300px;
   display: inline-block;
   margin: 40px 31px 40px;
 }
@@ -218,7 +222,13 @@ input[type="text"] {
   height: 150px;
   width: 200px;
   display: inline-block;
-  margin: 10px 10px 10px;
+  margin: 0px 20px 10px;
+}
+.solution1:first-child{
+  margin-left: 60px;
+}
+.solution1:last-child{
+  margin-right: 60px;
 }
 #quiz20_img_div{
   margin: auto;
@@ -249,7 +259,7 @@ input[type="text"] {
   height: 120px;
   width: 160px;
   display: inline-block;
-  margin: 40px 64px 0px;
+  margin: 20px 64px 0px;
 }
 .quiz2_choice:checked + label {
   border: 7px solid cornflowerblue ;
@@ -270,11 +280,11 @@ input[type="text"] {
   width: 100%;
 }
 #score30_img_div{
-  margin: 30px 10px 20px;
+  margin: 25px 10px 20px;
   width: 80%;
 }
 #score31_img_div{
-  margin: 0px 175px 10px;
+  margin-left: 175px;
   width: 80%;
 }
 .quiz3_choice + label {
@@ -291,9 +301,11 @@ input[type="text"] {
   height: 120px;
   width: 160px;
   display: inline-block;
+  margin-left: 50px;
 }
 .solution3:not(:first-child){
   margin-left: 168px;
+  margin-right: 75px;
 }
 .quiz3_choice:checked + label {
   border: 7px solid cornflowerblue ;
@@ -324,7 +336,7 @@ input[type="radio"] {
   font-size: 23px;
 }
 .score4_choice + label {
-  height: 50px;
+  height: 20px;
   width: 620px;
   font-size: 20px;
   text-align: left;
@@ -339,26 +351,28 @@ input[type="radio"] {
 #score_4_img_container {
   display: inline-block;
   vertical-align: top;
-  margin: 40px 40px 0px;
+  margin: 25px 40px 0px;
 }
 #quiz_4_choices_container {
   display: inline-block;
   vertical-align: top;
   margin-left: 80px;
+  text-align: left;
 }
 #score_4_choices_container {
   display: inline-block;
   vertical-align: top;
-  margin: 40px 40px 0px;
+  margin: 20px 40px 0px;
 }
 #quiz_5_container {
-  margin: 40px 80px 0px;
+  margin-top: 40px;
 }
 #quiz_5_player_container {
   display: inline-block;
   vertical-align: top;
   font-size: 25px;
   margin-left: 30px;
+  text-align: left;
 }
 #score_5_player_container {
   margin-top: 20px;
@@ -372,15 +386,17 @@ input[type="radio"] {
   padding-top: 5px;
   margin-left: 40px;
   font-size: 25px;
+  text-align: left;
 }
 #score_5_choices_container {
   display: inline-block;
   text-align: left;
   vertical-align: top;
   padding-top: 0px;
-  margin-top: 23px;
+  margin-top: 20px;
   margin-left: 40px;
   font-size: 20px;
+  padding-bottom: 0;
 }
 #quiz_5_left_container{
   margin-left: 30px;
@@ -389,7 +405,7 @@ input[type="radio"] {
   padding-top: 3px;
 }
 #score_5_left_container{
-  margin-top: 20px;
+  margin-top: 15px;
   margin-left: 30px;
   display: inline-block;
   vertical-align: top;
@@ -407,7 +423,12 @@ input[type="radio"] {
 .quiz5_move{
   vertical-align: top;
   width: 70px;
-  height: 67px;
+  height: 70px;
+}
+.score5_move{
+  vertical-align: top;
+  width: 70px;
+  height: 49px;
 }
 .quiz5_arrow{
   width: 100px;
@@ -434,18 +455,22 @@ input[type="radio"] {
 .quiz5_player_text{
   height: 70px;
 }
+.score5_player_text{
+  height: 50px;
+}
 .quiz5_choice {
   height: 34px;
 }
 .score5_choice {
-  height: 39px;
+  height: 20px;
 }
 #quiz_6_choices_container {
   margin: 40px 120px 10px;
   font-size: 23px;
+  text-align: left;
 }
 #score_6_choices_container {
-  margin: 40px 20px 0px;
+  margin: 30px 20px 0px;
   font-size: 20px;
   text-align: left;
 }
@@ -473,16 +498,23 @@ input[type="radio"] {
   width: auto;
 }
 .question_title {
-  font-size: 30px;
+  font-size: 40px;
 }
 .question_body {
-  color: cornflowerblue;
+  color: saddlebrown;
   text-align: center;
-  font-size: 25px;
+  font-size: 30px;
   margin-top: 30px;
 }
+.score_question {
+  font-weight: normal;
+  margin-top: 30px;
+  color: saddlebrown;
+  text-align: center;
+  font-size: 23px;
+}
 #end_body {
-  font-size: 40px;
+  font-size: 35px;
   padding: 30px 150px 40px;
   text-align: left;
 }
@@ -498,7 +530,7 @@ input[type="radio"] {
   font-size: 25px;
 }
 table {
-  margin-top: 60px;
+  margin-top: 70px;
   margin-left: 40px;
   border-collapse: separate;
   border-spacing: 300px 0;
@@ -532,4 +564,8 @@ table {
 td .score_but:hover{
   text-decoration: underline;
   cursor: pointer;
+}
+td .total_score{
+  font-size: 40px;
+  color: saddlebrown;
 }
