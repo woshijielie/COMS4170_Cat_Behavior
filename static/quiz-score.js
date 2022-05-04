@@ -122,19 +122,24 @@ function displayModal(quiz_data, solution, id) {
         let body_div = $("<div id='score_6_choices_container'></div>")
         $.each(choices, function (index, value) {
             let name = "S6" + index
-            let new_choice = $("<input type='checkbox' name='" + name + "' class='quiz6_choice'" +
-                "id='" + name + "'/><label for='" + name + "'>" + value + "</label><br>")
+            let new_choice = $("<input type='checkbox' name='" + name + "' class='score6_choice'" +
+                "id='" + name + "'/>")
+            let new_text = $("<div class='score6_text'>" + value + "</div><br>")
             // check selections user has made
             if (solution.includes(index.toString())) {
                 new_choice.prop('checked', true)
-                new_choice.css('color', 'green')
+                new_text.css('color', 'green')
                 console.log('Selected:' + index.toString())
             }
             new_choice.prop('disabled', true)
             $(body_div).append(new_choice)
+            $(body_div).append(new_text)
         })
         $(".score_modal").append(body_div)
+        $("label").css("display", "inline-block")
         $("input[type='checkbox']").css("vertical-align", "middle")
+        $("input[type='checkbox']").css("position", "relative")
+        $("label").css("height", "3px")
         $("label").css("opacity", "1")
         $("label").css("cursor", "default")
     }
