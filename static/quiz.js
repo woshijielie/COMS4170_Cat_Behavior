@@ -189,17 +189,23 @@ function display6(choices,answer){
     let body_div = $("<div id='quiz_6_choices_container'></div>")
     $.each(choices, function(index, value){
         let name = "Q6" + index
-        let new_choice= $("<input type='checkbox' name='" + name + "' class='quiz6_choice'" +
-            "id='" + name + "'/><label for='" + name + "'>" + value + "</label><br>")
+        let new_div = $("<div class='quiz6_body'></div>")
+        let new_choice = $("<input type='checkbox' name='" + name + "' class='quiz6_choice'" +
+                "id='" + name + "'/>")
+        let new_text = $("<div class='quiz6_text' id='quiz6_text" + index + "'>" + value + "</div><br>")
         // check selections user has made
         if(answer.includes(index.toString())){
             new_choice.prop('checked', true)
             console.log('Selected:'+index.toString())
         }
-        $(body_div).append(new_choice)
+        $(new_div).append(new_choice)
+        $(new_div).append(new_text)
+        $(body_div).append(new_div)
     })
     $("#quiz_container").append(body_div)
+    $("label").css("display", "block")
     $("input[type='checkbox']").css("vertical-align", "middle")
+    $("input[type='checkbox']").css("position", "relative")
 }
 
 
@@ -300,6 +306,10 @@ $(document).ready(function(){
     } else if (id == 6) {
         display6(data['choices'], user_answers[id-1])
         addButton(id)
+        $(document).on('click', '.quiz6_text', function (event) {
+            let id = $(this).attr("id").substr($(this).attr("id").length - 1)
+            $("#Q6" + id).prop("checked", !$("#Q6" + id).prop("checked"))
+        })
     }
     //update user answers
     update_answers(id, user_answers, data['colors']);
