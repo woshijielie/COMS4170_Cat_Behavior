@@ -35,7 +35,7 @@ function navTitle(type) {
 }
 
 function display(data, id) {
-  let top = $("<div class=''><div>");
+  let top = $("<div class='top-div'><div>");
   let btm = $("<div class='btm-div'><div>");
 
   let body_div = $("<div id='quiz_4_container'></div>");
@@ -55,10 +55,10 @@ function display(data, id) {
 
   $(img_div).append(top);
   $(img_div).append(btm);
-  let title = $("<div class='title big text-div'>" + data["behavior"] + "</div>");
-  let explain = $("<div class='learn_text text-div'>" + data["explanation"] + "</div>");
+  let title = $("<div class='title big'>" + data["behavior"] + "</div>");
+  let explain = $("<div class='learn_text'>" + data["explanation"] + "</div>");
   let example = $(
-    "<div class='learn_text'><span class='big text-div'>Example: </span><span>" +
+    "<div class='learn_text'><span class='big'>Example: </span><span>" +
       data["example"] +
       "</div>"
   );
