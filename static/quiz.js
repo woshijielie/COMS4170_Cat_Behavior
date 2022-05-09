@@ -122,7 +122,7 @@ function display5(color, img, choices, audios){
         $(new_player).css('color', color[i])
         $(player_div).append(new_player)
 
-        let new_audio = $("<audio id='" + audio_name + "'><source src='" + value +
+        let new_audio = $("<audio class='quiz5_audio' id='" + audio_name + "'><source src='" + value +
             "' type='" + type + "'></audio>")
         $(audio_div).append(new_audio)
 
@@ -300,6 +300,9 @@ $(document).ready(function(){
         })
         //play audio
         $(document).on('click', '.quiz5_img', function (event) {
+            for(var i = 0; i < 5; i++){
+                $("#Q5A" + i)[0].pause()
+            }
             let id = $(this).attr("id").substr($(this).attr("id").length - 1)
             $("#Q5A" + id)[0].play()
         })
