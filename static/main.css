@@ -50,10 +50,10 @@ a:active { text-decoration: none; }
 }
 .nav-title {
   position: absolute;
-  top: 13%;
+  top: 20%;
   left: 2%;
   display: inline-block;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bolder;
   color: black;
 }
@@ -201,7 +201,7 @@ input[type="text"] {
   margin: 10px 20px 10px;
 }
 .title {
-  font-size: 60px;
+  font-size: 48px;
   color: black;
   text-align: center;
   margin: 30px;
