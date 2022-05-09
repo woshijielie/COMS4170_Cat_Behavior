@@ -67,7 +67,7 @@ a{
 .nav-section {
   position: absolute;
   top: 25%;
-  left: 48%;
+  left: 46%;
   display: inline-block;
   font-size: 30px;
   font-family: "Times New Roman";
@@ -112,14 +112,15 @@ a{
   margin: 20px;
 }
 .more_button {
-  right: 100px;
+  right: 20px;
   width: 180px;
   height: 45px;
   background-color: #b6948d;
   font-weight: bolder;
-  border-style: none;
   display: inline-block;
-  margin-left: 20px; 
+  margin: 10px;
+  position: relative;
+  top: 10px;
 }
 .finish_button {
   position: absolute;
@@ -181,7 +182,6 @@ a{
 .learn_img {
   width: 280px;
   height: 280px;
-  margin: 10px 18px;
   position: relative;
 }
 .learn_gif {
