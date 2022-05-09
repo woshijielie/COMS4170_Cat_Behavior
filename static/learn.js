@@ -15,10 +15,10 @@ function addButton(id) {
       "';\">< Previous</button>"
   );
 
-  if (prev_id != 0 && prev_id != 3 && prev_id != 6 && prev_id != 11 && prev_id != 12) {
+  if (prev_id != 0 && prev_id != 3 && prev_id != 6 && prev_id != 11 && prev_id != 12 && prev_id != 13) {
     $(but_div).append(prev_button);
   }
-  if (next_id != 4 && next_id != 7 && next_id != 12 && next_id != 13 && next_id != 14) {
+  if (next_id != 4 && next_id != 7 && next_id != 12 && next_id != 13 && next_id != 14 && next_id != 15) {
     $(but_div).append(next_button);
   }
   $("#learn_container").append(but_div);
@@ -81,9 +81,9 @@ function display(data, id) {
 
 function display12(data) {
   let video_div = $(
-    "<div class='center '><embed src='" +
+    "<div class='center'><iframe src='" +
       data +
-      "' allowfullscreen='true' width='525' height='404'>"
+      "' allowfullscreen='true' width='525' height='404'></iframe></div>"
   );
 
   let fin_buttton = $(
@@ -94,24 +94,29 @@ function display12(data) {
   $("#learn_container").append(fin_buttton);
 }
 
-function display13(data) {
+function display14(data) {
   let title = $("<div class='title big'>If you want to know more...</div>");
+  let img_div = $("<div class='center'></div>")
   let button_div = $("<div class='button_container center'></div>");
 
+  let img = $("<img src='" + data["img"] + "' width='525' height='404'>");
+  img_div.append(img);
+
+  // let ear_but = $(
+  //   "<button type='button' class='btn btn-custom btn-lg more_button' onclick='window.open(\"" +
+  //     data["videos"][0] +
+  //     "\")'>Eye</button>"
+  // );
+
   let ear_but = $(
-    "<button type='button' class='btn btn-custom btn-lg more_button' onclick='window.open(\"" +
-      data[0] +
-      "\")'>Ear</button>"
-  );
+    "<button type='button' class='btn btn-custom btn-lg more_button' data-toggle='modal' data-target='#earModal'>ear</button>"
+    );
+
   let eye_but = $(
-    "<button type='button' class='btn btn-custom btn-lg more_button' onclick='window.open(\"" +
-      data[1] +
-      "\")'>Eye</button>"
+    "<button type='button' class='btn btn-custom btn-lg more_button' data-toggle='modal' data-target='#eyeModal'>eye</button>"
   );
   let tail_but = $(
-    "<button type='button' class='btn btn-custom btn-lg more_button' onclick='window.open(\"" +
-      data[2] +
-      "\")'>Tail</button>"
+    "<button type='button' class='btn btn-custom btn-lg more_button' data-toggle='modal' data-target='#tailModal'>tail</button>"
   );
 
   let quiz_button = $(
@@ -123,6 +128,7 @@ function display13(data) {
   $(button_div).append(tail_but);
 
   $("#learn_container").append(title);
+  $("#learn_container").append(img_div);
   $("#learn_container").append(button_div);
   $("#learn_container").append(quiz_button);
 }
@@ -152,7 +158,7 @@ $(document).ready(function () {
   addButton(id);
   navTitle(data["part"].toUpperCase());
 
-  if (id!=13) {
+  if (id!=14) {
     // record timestamp if it's start/end page for each section (ear, eye, tail)
     let visit_time = Math.floor(Date.now() / 1000);//ts in second
     let part = data["part"].toLowerCase()
@@ -171,10 +177,10 @@ $(document).ready(function () {
     update_learning_stage_to_server(learning_stage);
   }
 
-  if (id == 12) {
+  if (id == 12 || id == 13) {
     display12(data["video"]);
-  } else if (id == 13) {
-    display13(data["videos"]);
+  } else if (id == 14) {
+    display14(data);
   } else {
     display(data, id);
   }
