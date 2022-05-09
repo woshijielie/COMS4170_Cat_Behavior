@@ -83,7 +83,7 @@ function display12(data) {
   let video_div = $(
     "<div class='center'><iframe src='" +
       data +
-      "' allowfullscreen='true' width='525' height='404'></iframe></div>"
+      "' allowfullscreen='true' width='735' height='560'></iframe></div>"
   );
 
   let fin_buttton = $(
