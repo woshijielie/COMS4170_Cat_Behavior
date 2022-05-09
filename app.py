@@ -95,10 +95,15 @@ learnData = {
    },
    "12": {
       "part": "Body",
-      "video": "https://www.youtube.com/embed/rb2xTAHVqjs"
+      "video": "https://www.youtube.com/embed/vmjLH2Re8g4",
    },
    "13": {
+      "part": "Vocal",
+      "video": "https://www.youtube.com/embed/ANBaxUCNrOI",
+   },
+   "14": {
       "part": "More",
+      "img": "https://4170img.s3.amazonaws.com/more.png",
       "videos": [
          "https://www.youtube.com/watch?v=IzlJmxberJc",
          "https://www.youtube.com/watch?v=DFOCLSCANaI",
@@ -174,6 +179,7 @@ learning_stage = {
     "eye":{"start":[4,None], "finish":[6,None]},
     "tail":{"start":[7,None], "finish":[11,None]},
     "body":{"start":[12,None], "finish":[12,None]},
+    "vocal":{"start":[13,None], "finish":[13,None]},
 }
 
 # ROUTES
